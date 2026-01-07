@@ -114,9 +114,9 @@ pub trait Token<T: Config>: Copy + Clone + TestAuxiliaries {
 	/// Return the amount of gas that should be taken by this token.
 	///
 	/// This function should be really lightweight and must not fail. It is not
-	/// expected that implementors will query the storage or do any kinds of heavy operations.
+	/// expected that implementers will query the storage or do any kinds of heavy operations.
 	///
-	/// That said, implementors of this function still can run into overflows
+	/// That said, implementers of this function still can run into overflows
 	/// while calculating the amount. In this case it is ok to use saturating operations
 	/// since on overflow they will return `max_value` which should consume all gas.
 	fn weight(&self) -> Weight;

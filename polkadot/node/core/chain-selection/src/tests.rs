@@ -1287,7 +1287,7 @@ fn finalize_erases_unviable_but_keeps_later_unviability() {
 		//
 		// A2 reverts A1.
 		// A3 reverts A2.
-		// Finalize A1. A2 is stil unviable, but B2 is viable.
+		// Finalize A1. A2 is still unviable, but B2 is viable.
 
 		let (a3_hash, chain_a) =
 			construct_chain_on_base(vec![1, 2, 3], finalized_number, finalized_hash, |h| {

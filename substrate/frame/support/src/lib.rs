@@ -2142,7 +2142,7 @@ pub mod pallet_macros {
 	/// [`frame_support::StorageHasher`](frame_support::StorageHasher).
 	///
 	/// Lastly, it's recommended for hashers with "concat" to have reversible hashes. Refer to
-	/// the implementors section of
+	/// the implementers section of
 	/// [`hash::ReversibleStorageHasher`](frame_support::hash::ReversibleStorageHasher).
 	///
 	/// ### Prefixes

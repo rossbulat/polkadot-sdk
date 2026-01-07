@@ -261,7 +261,7 @@ impl<T: Get<(AssetId, u128, u128)>, R: TakeRevenue> WeightTrader for FixedRateOf
 			return Ok(payment)
 		}
 		let unused = payment.checked_sub((id, amount).into()).map_err(|error| {
-			tracing::error!(target: "xcm::weight", ?amount, ?error, "FixedRateOfFungible::buy_weight Failed to substract from payment");
+			tracing::error!(target: "xcm::weight", ?amount, ?error, "FixedRateOfFungible::buy_weight Failed to subtract from payment");
 			XcmError::TooExpensive
 		})?;
 		self.0 = self.0.saturating_add(weight);
@@ -333,7 +333,7 @@ impl<
 		})?;
 		let required = Asset { id: AssetId(AssetIdValue::get()), fun: Fungible(u128_amount) };
 		let unused = payment.checked_sub(required).map_err(|error| {
-			tracing::debug!(target: "xcm::weight", ?error, "Failed to substract from payment");
+			tracing::debug!(target: "xcm::weight", ?error, "Failed to subtract from payment");
 			XcmError::TooExpensive
 		})?;
 		self.0 = self.0.saturating_add(weight);

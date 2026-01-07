@@ -1536,7 +1536,7 @@ pub fn reserve_transfer_native_asset_to_non_teleport_para_works<
 
 			// we calculate exact delivery fees _after_ sending the message by weighing the sent
 			// xcm, and this delivery fee varies for different runtimes, so just add enough buffer,
-			// then verify the arithmetics check out on final balance.
+			// then verify the arithmetic check out on final balance.
 			let delivery_fees_buffer = 40_000_000_000u128;
 			// drip 2xED + transfer_amount + delivery_fees_buffer to Alice account
 			let alice_account_init_balance = existential_deposit.saturating_mul(2.into()) +

@@ -330,7 +330,7 @@ impl<T: Config> Pallet<T> {
 
 	/// Make the parachain reachable for downward messages.
 	///
-	/// Only useable in benchmarks or tests.
+	/// Only usable in benchmarks or tests.
 	#[cfg(any(feature = "runtime-benchmarks", feature = "std"))]
 	pub fn make_parachain_reachable(para: impl Into<ParaId>) {
 		let para = para.into();

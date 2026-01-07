@@ -66,7 +66,7 @@ use std::time::Instant;
 
 // The max number of blocks we keep track of assignments gathering times. Normally,
 // this would never be reached because we prune the data on finalization, but we need
-// to also ensure the data is not growing unecessarily large.
+// to also ensure the data is not growing unnecessarily large.
 const MAX_BLOCKS_WITH_ASSIGNMENT_TIMESTAMPS: u32 = 100;
 
 use futures::{
@@ -337,7 +337,7 @@ impl Metrics {
 	pub fn observe_assignment_gathering_time(&self, stage: usize, elapsed_as_millis: usize) {
 		if let Some(metrics) = &self.0 {
 			let stage_string = stage.to_string();
-			// We don't want to have too many metrics entries with this label to not put unncessary
+			// We don't want to have too many metrics entries with this label to not put unnecessary
 			// pressure on the metrics infrastructure, so we cap the stage at 10, which is
 			// equivalent to having already a finalization lag to 10 * no_show_slots, so it should
 			// be more than enough.

@@ -303,7 +303,7 @@ impl_for_tuples_attr! {
 
 		/// [`OnRuntimeUpgrade::pre_upgrade`] should not be used on a tuple.
 		///
-		/// Instead, implementors should use [`OnRuntimeUpgrade::try_on_runtime_upgrade`] which
+		/// Instead, implementers should use [`OnRuntimeUpgrade::try_on_runtime_upgrade`] which
 		/// internally calls `pre_upgrade` -> `on_runtime_upgrade` -> `post_upgrade` for each tuple
 		/// member in sequence, enabling testing of order-dependent migrations.
 		#[cfg(feature = "try-runtime")]
@@ -313,7 +313,7 @@ impl_for_tuples_attr! {
 
 		/// [`OnRuntimeUpgrade::post_upgrade`] should not be used on a tuple.
 		///
-		/// Instead, implementors should use [`OnRuntimeUpgrade::try_on_runtime_upgrade`] which
+		/// Instead, implementers should use [`OnRuntimeUpgrade::try_on_runtime_upgrade`] which
 		/// internally calls `pre_upgrade` -> `on_runtime_upgrade` -> `post_upgrade` for each tuple
 		/// member in sequence, enabling testing of order-dependent migrations.
 		#[cfg(feature = "try-runtime")]

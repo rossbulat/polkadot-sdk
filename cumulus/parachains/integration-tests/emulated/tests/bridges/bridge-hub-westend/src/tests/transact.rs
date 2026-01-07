@@ -168,7 +168,7 @@ fn transact_from_ethereum_to_penpalb_through_asset_hub() {
 	// Now register a new asset on PenpalB from Ethereum/Bob account while paying fees using WETH
 	// (going through Asset Hub)
 	let weth_to_send: Asset = (bridged_weth.clone(), fee_amount_to_send).into();
-	// Silly example of a Transact: Bob creates his own foreign assset on PenpalB based on his
+	// Silly example of a Transact: Bob creates his own foreign asset on PenpalB based on his
 	// Ethereum address
 	let foreign_asset_at_penpal_b = Location::new(
 		2,

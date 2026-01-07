@@ -97,12 +97,12 @@ impl<Sender: overseer::AvailabilityRecoverySenderTrait> RecoveryStrategy<Sender>
 					let recovery_duration =
 						common_params.metrics.time_erasure_recovery(strategy_type);
 					let maybe_data = match common_params.post_recovery_check {
-						PostRecoveryCheck::Reencode => {
+						PostRecoveryCheck::Re-encode => {
 							let (reencode_tx, reencode_rx) = oneshot::channel();
 							let mut erasure_task_tx = common_params.erasure_task_tx.clone();
 
 							erasure_task_tx
-								.send(ErasureTask::Reencode(
+								.send(ErasureTask::Re-encode(
 									common_params.n_validators,
 									common_params.erasure_root,
 									data,

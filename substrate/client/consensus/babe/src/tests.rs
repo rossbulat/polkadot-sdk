@@ -1144,7 +1144,7 @@ async fn allows_skipping_epochs() {
 	assert_eq!(epoch1.start_slot, Slot::from(epoch_length + 1));
 
 	// the first block in epoch 1 (#7) announces epoch 2. we will be skipping
-	// this epoch and therefore re-using its data for epoch 3
+	// this epoch and therefore reusing its data for epoch 3
 	let epoch2 = epoch_changes
 		.shared_data()
 		.epoch(&EpochIdentifier {

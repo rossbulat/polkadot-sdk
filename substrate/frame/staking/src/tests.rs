@@ -109,7 +109,7 @@ fn force_unstake_works() {
 		assert_eq!(Staking::bonded(&11), Some(11));
 		// Adds 2 slashing spans
 		add_slash(&11);
-		// Cant transfer
+		// Can't transfer
 		assert_noop!(
 			Balances::transfer_allow_death(RuntimeOrigin::signed(11), 1, 10),
 			TokenError::FundsUnavailable,
@@ -4573,7 +4573,7 @@ fn cannot_rebond_to_lower_than_ed() {
 				}
 			);
 
-			// now bond a wee bit more
+			// now bond a we bit more
 			assert_noop!(
 				Staking::rebond(RuntimeOrigin::signed(21), 5),
 				Error::<Test>::InsufficientBond
@@ -4613,7 +4613,7 @@ fn cannot_bond_extra_to_lower_than_ed() {
 				}
 			);
 
-			// now bond a wee bit more
+			// now bond a we bit more
 			assert_noop!(
 				Staking::bond_extra(RuntimeOrigin::signed(21), 5),
 				Error::<Test>::InsufficientBond,

@@ -27,7 +27,7 @@
 //! Then, every member of the ecosystem can implement the subset of the language that makes sense
 //! for them.
 //!
-//! The language evolves over time to accomodate the needs of the community
+//! The language evolves over time to accommodate the needs of the community
 //! via the [RFC process](https://github.com/paritytech/xcm-format/blob/master/proposals/0032-process.md).
 //!
 //! XCM is the language, it deals with interpreting and executing programs.

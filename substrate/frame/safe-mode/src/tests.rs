@@ -385,7 +385,7 @@ fn can_release_deposit_while_entered() {
 			1
 		),);
 		assert_eq!(Balances::free_balance(&0), BAL_ACC0);
-		// ... it wont work ever again.
+		// ... it won't work ever again.
 		assert_err!(
 			SafeMode::force_release_deposit(
 				RuntimeOrigin::signed(mock::ForceDepositOrigin::get()),
@@ -419,7 +419,7 @@ fn can_slash_deposit_while_entered() {
 			0,
 			1
 		),);
-		// ... it wont work ever again.
+		// ... it won't work ever again.
 		assert_err!(
 			SafeMode::force_slash_deposit(
 				RuntimeOrigin::signed(mock::ForceDepositOrigin::get()),

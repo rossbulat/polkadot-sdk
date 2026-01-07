@@ -672,7 +672,7 @@ enum InvalidAssignmentError {
 		claimed_index: usize,
 		max_index: usize,
 	},
-	// The assignment claimes more candidates than the maximum allowed.
+	// The assignment claims more candidates than the maximum allowed.
 	OversizedClaimedBitfield,
 	// `SessionInfo`  was not found for the block hash in the assignment.
 	#[allow(dead_code)]
@@ -2669,7 +2669,7 @@ impl ApprovalDistribution {
 		}
 	}
 
-	/// Handles a from orchestra message received by approval distribution subystem.
+	/// Handles a from orchestra message received by approval distribution subsystem.
 	///
 	/// Returns `true` if the subsystem should be stopped.
 	pub async fn handle_from_orchestra<

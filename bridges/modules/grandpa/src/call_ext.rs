@@ -115,7 +115,7 @@ impl<T: Config<I>, I: 'static> SubmitFinalityProofHelper<T, I> {
 
 		// let's also check whether the header submission fits the hardcoded limits. A normal
 		// relayer would check that before submitting a transaction (since limits are constants
-		// and do not depend on a volatile runtime state), but the ckeck itself is cheap, so
+		// and do not depend on a volatile runtime state), but the check itself is cheap, so
 		// let's do it here too
 		if !call_info.fits_limits() {
 			return Err(Error::<T, I>::HeaderOverflowLimits);

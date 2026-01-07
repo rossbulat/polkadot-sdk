@@ -1486,13 +1486,13 @@ struct InternalOutput<T: Config, O> {
 environmental!(executing_contract: bool);
 
 /// Helper trait to wrap contract execution entry points into a single function
-/// [`Invokable::run_guarded`].
-trait Invokable<T: Config>: Sized {
+/// [`Invocable::run_guarded`].
+trait Invocable<T: Config>: Sized {
 	/// What is returned as a result of a successful invocation.
 	type Output;
 
 	/// Single entry point to contract execution.
-	/// Downstream execution flow is branched by implementations of [`Invokable`] trait:
+	/// Downstream execution flow is branched by implementations of [`Invocable`] trait:
 	///
 	/// - [`InstantiateInput::run`] runs contract instantiation,
 	/// - [`CallInput::run`] runs contract call.
@@ -1543,17 +1543,17 @@ trait Invokable<T: Config>: Sized {
 	/// Method that does the actual call to a contract. It can be either a call to a deployed
 	/// contract or a instantiation of a new one.
 	///
-	/// Called by dispatchables and public functions through the [`Invokable::run_guarded`].
+	/// Called by dispatchables and public functions through the [`Invocable::run_guarded`].
 	fn run(self, common: CommonInput<T>, gas_meter: GasMeter<T>)
 		-> InternalOutput<T, Self::Output>;
 
-	/// This method ensures that the given `origin` is allowed to invoke the current `Invokable`.
+	/// This method ensures that the given `origin` is allowed to invoke the current `Invocable`.
 	///
-	/// Called by dispatchables and public functions through the [`Invokable::run_guarded`].
+	/// Called by dispatchables and public functions through the [`Invocable::run_guarded`].
 	fn ensure_origin(&self, origin: Origin<T>) -> Result<(), DispatchError>;
 }
 
-impl<T: Config> Invokable<T> for CallInput<T> {
+impl<T: Config> Invocable<T> for CallInput<T> {
 	type Output = ExecReturnValue;
 
 	fn run(
@@ -1601,7 +1601,7 @@ impl<T: Config> Invokable<T> for CallInput<T> {
 	}
 }
 
-impl<T: Config> Invokable<T> for InstantiateInput<T> {
+impl<T: Config> Invocable<T> for InstantiateInput<T> {
 	type Output = (AccountIdOf<T>, ExecReturnValue);
 
 	fn run(

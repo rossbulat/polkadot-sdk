@@ -1887,7 +1887,7 @@ fn renewal_works_leases_ended_before_start_sales() {
 			Broker::latest_timeslice_ready_to_commit(&config) + config.region_length * 3
 		));
 
-		// This intializes the first sale and the period 0.
+		// This initializes the first sale and the period 0.
 		assert_ok!(Broker::do_start_sales(100, 0));
 		assert_noop!(Broker::do_renew(1, 1), Error::<Test>::Unavailable);
 		assert_noop!(Broker::do_renew(1, 0), Error::<Test>::Unavailable);
@@ -1895,7 +1895,7 @@ fn renewal_works_leases_ended_before_start_sales() {
 		// Lease for task 1 should have been dropped.
 		assert!(Leases::<Test>::get().iter().any(|l| l.task == 2));
 
-		// This intializes the second and the period 1.
+		// This initializes the second and the period 1.
 		advance_sale_period();
 
 		// Now we can finally renew the core 0 of task 1.
@@ -1904,7 +1904,7 @@ fn renewal_works_leases_ended_before_start_sales() {
 		assert_noop!(Broker::do_renew(1, 1), Error::<Test>::SoldOut);
 		assert_eq!(balance(1), 99000);
 
-		// This intializes the third sale and the period 2.
+		// This initializes the third sale and the period 2.
 		advance_sale_period();
 		let new_core = Broker::do_renew(1, new_core).unwrap();
 
@@ -1915,7 +1915,7 @@ fn renewal_works_leases_ended_before_start_sales() {
 		// All leases should have ended
 		assert!(Leases::<Test>::get().is_empty());
 
-		// This intializes the fourth sale and the period 3.
+		// This initializes the fourth sale and the period 3.
 		advance_sale_period();
 
 		// Renew again
@@ -1924,7 +1924,7 @@ fn renewal_works_leases_ended_before_start_sales() {
 		assert_eq!(1, Broker::do_renew(1, 0).unwrap());
 		assert_eq!(balance(1), 98790);
 
-		// This intializes the fifth sale and the period 4.
+		// This initializes the fifth sale and the period 4.
 		advance_sale_period();
 
 		assert_eq!(

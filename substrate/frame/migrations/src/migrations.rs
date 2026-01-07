@@ -35,7 +35,7 @@ use sp_runtime::SaturatedConversion;
 /// # Parameters
 ///
 /// - T: The runtime. Used to access the weight definition.
-/// - P: The pallet to resetted as defined in construct runtime
+/// - P: The pallet to reset as defined in construct runtime
 ///
 /// # Note
 ///
@@ -71,7 +71,7 @@ where
 		cursor: Option<Self::Cursor>,
 		meter: &mut WeightMeter,
 	) -> Result<Option<Self::Cursor>, SteppedMigrationError> {
-		// we write the storage version in a seperate block
+		// we write the storage version in a separate block
 		if cursor.unwrap_or(false) {
 			let required = T::DbWeight::get().writes(1);
 			meter

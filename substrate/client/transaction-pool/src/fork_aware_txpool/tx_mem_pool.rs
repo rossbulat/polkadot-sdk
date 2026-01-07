@@ -83,7 +83,7 @@ const SYNC_BRIDGE_EXPECT: &str = "The mempool blocking task shall not be termina
 /// a transaction is marked as invalid, useful to extract labels in the context of
 /// `mempool_revalidation_invalid_txs` metric.
 pub(super) enum InvalidTxReason {
-	/// Coresponds to invalid validity.
+	/// Corresponds to invalid validity.
 	Invalid(String),
 	/// Corresponds to unknown validity.
 	Unknown(String),
@@ -503,7 +503,7 @@ where
 	/// same prio.
 	///
 	/// This operation will not overflow the limit of the mempool. It means that cumulative
-	/// size of removed transactions will be equal (or greated) then size of newly inserted
+	/// size of removed transactions will be equal (or greater) then size of newly inserted
 	/// transaction.
 	///
 	/// Returns a `Result` containing `InsertionInfo` if the new transaction is successfully
@@ -585,7 +585,7 @@ where
 			.await
 	}
 
-	/// Provides read-only access to all transctions via an iterator.
+	/// Provides read-only access to all transactions via an iterator.
 	///
 	/// This function allows to iterate over all stored transaction without cloning.
 	/// The provided closure receives an iterator over references to keys and values.

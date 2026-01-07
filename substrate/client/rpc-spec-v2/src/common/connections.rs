@@ -33,7 +33,7 @@ pub struct RpcConnections {
 	///
 	/// This is used to limit how many `chainHead_follow` subscriptions are active at one time.
 	capacity: usize,
-	/// Map the connecton ID to a set of identifiers.
+	/// Map the connection ID to a set of identifiers.
 	data: Arc<Mutex<HashMap<ConnectionId, ConnectionData>>>,
 }
 

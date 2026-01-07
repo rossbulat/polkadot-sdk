@@ -110,7 +110,7 @@ PoV with the Code at the time of backing the block in question.
 If the validator was also a backer of the block, validation and casting an additional vote should be skipped.
 
 If the count of votes pro or cons regarding the disputed block, reaches the required ⅔ supermajority (including the
-backing votes), the conclusion must be recorded on chain and the voters on the loosing and no-shows being slashed
+backing votes), the conclusion must be recorded on chain and the voters on the losing and no-shows being slashed
 appropriately.
 
 If a block is found invalid by a dispute resolution, it must be blacklisted to avoid resync or further build on that

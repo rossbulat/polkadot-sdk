@@ -55,7 +55,7 @@ pub use tracing;
 
 const ZERO_DURATION: Duration = Duration::from_nanos(0);
 
-/// Responsible for assigning ids to new spans, which are not re-used.
+/// Responsible for assigning ids to new spans, which are not reused.
 pub struct ProfilingLayer {
 	targets: Vec<(String, Level)>,
 	trace_handlers: Vec<Box<dyn TraceHandler>>,

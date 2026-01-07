@@ -274,7 +274,7 @@ fn historic_skipping_works() {
 		]);
 		assert_eq!(upgrades_started_completed_failed(), (1, 1, 0));
 
-		// Now go for another upgrade; just to make sure that it wont execute again.
+		// Now go for another upgrade; just to make sure that it won't execute again.
 		System::reset_events();
 		Migrations::on_runtime_upgrade();
 		run_to_block(20);

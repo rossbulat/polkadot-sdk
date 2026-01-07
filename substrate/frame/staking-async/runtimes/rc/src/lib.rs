@@ -641,7 +641,7 @@ impl<S: Get<Perbill>> DisablingStrategy<Runtime> for AlwaysDisableForSlashGreate
 			},
 		};
 
-		DisablingDecision { disable, reenable: None }
+		DisablingDecision { disable, re-enable: None }
 	}
 }
 

@@ -1356,7 +1356,7 @@ mod extension_weight_tests {
 	use sp_core::parameter_types;
 	use sp_runtime::{
 		generic::{self, ExtrinsicFormat},
-		traits::{Applyable, BlakeTwo256, DispatchTransaction, TransactionExtension},
+		traits::{Applicable, BlakeTwo256, DispatchTransaction, TransactionExtension},
 	};
 	use sp_weights::RuntimeDbWeight;
 	use test_extensions::{ActualWeightIs, FreeIfUnder, HalfCostIf};

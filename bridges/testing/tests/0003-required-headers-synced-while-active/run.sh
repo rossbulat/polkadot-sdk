@@ -2,7 +2,7 @@
 
 set -e
 
-# TODO: This test doesn't work. It was added at a time when we couldn't run it because we didn't have the scafolding.
+# TODO: This test doesn't work. It was added at a time when we couldn't run it because we didn't have the scaffolding.
 # It needs to be fixed. For the moment we keep it in the repo as it is since the idea has value.
 # But we don't run it in the CI.
 

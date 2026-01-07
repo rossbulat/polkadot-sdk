@@ -31,11 +31,11 @@ pub trait DisablingStrategy<T: Config> {
 /// `decision`
 ///
 /// `disable` is the index of the validator to disable,
-/// `reenable` is the index of the validator to re-enable.
+/// `re-enable` is the index of the validator to re-enable.
 #[derive(Debug)]
 pub struct DisablingDecision {
 	pub disable: Option<u32>,
-	pub reenable: Option<u32>,
+	pub re-enable: Option<u32>,
 }
 
 impl<T: Config> DisablingStrategy<T> for () {
@@ -44,7 +44,7 @@ impl<T: Config> DisablingStrategy<T> for () {
 		_offender_slash_severity: OffenceSeverity,
 		_currently_disabled: &Vec<(u32, OffenceSeverity)>,
 	) -> DisablingDecision {
-		DisablingDecision { disable: None, reenable: None }
+		DisablingDecision { disable: None, re-enable: None }
 	}
 }
 /// Calculate the disabling limit based on the number of validators and the disabling limit factor.
@@ -96,19 +96,19 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 				"Won't disable: reached disabling limit {:?}",
 				Self::disable_limit(active_set.len())
 			);
-			return DisablingDecision { disable: None, reenable: None }
+			return DisablingDecision { disable: None, re-enable: None }
 		}
 
 		let offender_idx = if let Some(idx) = active_set.iter().position(|i| i == offender_stash) {
 			idx as u32
 		} else {
 			log!(debug, "Won't disable: offender not in active set",);
-			return DisablingDecision { disable: None, reenable: None }
+			return DisablingDecision { disable: None, re-enable: None }
 		};
 
 		log!(debug, "Will disable {:?}", offender_idx);
 
-		DisablingDecision { disable: Some(offender_idx), reenable: None }
+		DisablingDecision { disable: Some(offender_idx), re-enable: None }
 	}
 }
 
@@ -149,7 +149,7 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 			idx as u32
 		} else {
 			log!(debug, "Won't disable: offender not in active set",);
-			return DisablingDecision { disable: None, reenable: None }
+			return DisablingDecision { disable: None, re-enable: None }
 		};
 
 		// Check if offender is already disabled
@@ -158,10 +158,10 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 		{
 			if offender_slash_severity > *old_severity {
 				log!(debug, "Offender already disabled but with lower severity, will disable again to refresh severity of {:?}", offender_idx);
-				return DisablingDecision { disable: Some(offender_idx), reenable: None };
+				return DisablingDecision { disable: Some(offender_idx), re-enable: None };
 			} else {
 				log!(debug, "Offender already disabled with higher or equal severity");
-				return DisablingDecision { disable: None, reenable: None };
+				return DisablingDecision { disable: None, re-enable: None };
 			}
 		}
 
@@ -184,16 +184,16 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 				log!(debug, "Will disable {:?} and re-enable {:?}", offender_idx, smallest_idx);
 				return DisablingDecision {
 					disable: Some(offender_idx),
-					reenable: Some(*smallest_idx),
+					re-enable: Some(*smallest_idx),
 				}
 			} else {
 				log!(debug, "No smaller offender found to re-enable");
-				return DisablingDecision { disable: None, reenable: None }
+				return DisablingDecision { disable: None, re-enable: None }
 			}
 		} else {
 			// If we are not at the limit, just disable the new offender and dont re-enable anyone
 			log!(debug, "Will disable {:?}", offender_idx);
-			return DisablingDecision { disable: Some(offender_idx), reenable: None }
+			return DisablingDecision { disable: Some(offender_idx), re-enable: None }
 		}
 	}
 }

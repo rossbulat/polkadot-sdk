@@ -161,7 +161,7 @@
 //!
 //! Within the unique Substrate substream, messages encoded using
 //! [*parity-scale-codec*](https://github.com/paritytech/parity-scale-codec) are exchanged.
-//! The detail of theses messages is not totally in place, but they can be found in the
+//! The detail of these messages is not totally in place, but they can be found in the
 //! `message.rs` file.
 //!
 //! Once the substream is open, the first step is an exchange of a *status* message from both

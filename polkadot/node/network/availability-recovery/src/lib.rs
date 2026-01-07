@@ -143,8 +143,8 @@ pub struct AvailabilityRecoverySubsystem {
 #[derive(Clone, PartialEq, Debug)]
 /// The type of check to perform after available data was recovered.
 enum PostRecoveryCheck {
-	/// Reencode the data and check erasure root. For validators.
-	Reencode,
+	/// Re-encode the data and check erasure root. For validators.
+	Re-encode,
 	/// Only check the pov hash. For collators only.
 	PovHash,
 }
@@ -159,7 +159,7 @@ enum ErasureTask {
 	),
 	/// Re-encode `AvailableData` into erasure chunks in order to verify the provided root hash of
 	/// the Merkle tree.
-	Reencode(usize, Hash, AvailableData, oneshot::Sender<Option<AvailableData>>),
+	Re-encode(usize, Hash, AvailableData, oneshot::Sender<Option<AvailableData>>),
 }
 
 /// Re-encode the data into erasure chunks in order to verify
@@ -635,7 +635,7 @@ impl AvailabilityRecoverySubsystem {
 					fetch_chunks_threshold.unwrap_or(CONSERVATIVE_FETCH_CHUNKS_THRESHOLD),
 				),
 			bypass_availability_store: false,
-			post_recovery_check: PostRecoveryCheck::Reencode,
+			post_recovery_check: PostRecoveryCheck::Re-encode,
 			req_receiver,
 			metrics,
 			req_v1_protocol_name: req_protocol_names
@@ -657,7 +657,7 @@ impl AvailabilityRecoverySubsystem {
 		Self {
 			recovery_strategy_kind,
 			bypass_availability_store: false,
-			post_recovery_check: PostRecoveryCheck::Reencode,
+			post_recovery_check: PostRecoveryCheck::Re-encode,
 			req_receiver,
 			metrics,
 			req_v1_protocol_name: req_protocol_names
@@ -892,7 +892,7 @@ async fn erasure_task_thread(
 					}),
 				));
 			},
-			Some(ErasureTask::Reencode(n_validators, root, available_data, sender)) => {
+			Some(ErasureTask::Re-encode(n_validators, root, available_data, sender)) => {
 				let metrics = metrics.clone();
 
 				let maybe_data = if reconstructed_data_matches_root(

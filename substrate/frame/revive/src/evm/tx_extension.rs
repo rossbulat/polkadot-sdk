@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//! Contains transaction extensions needed for ethereum compatability.
+//! Contains transaction extensions needed for ethereum compatibility.
 
 use crate::{CallOf, Config, Origin, OriginFor};
 use codec::{Decode, DecodeWithMemTracking, Encode};

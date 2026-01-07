@@ -119,7 +119,7 @@ impl Key {
 
 /// Level of reentrancy protection.
 ///
-/// This needs to be specifed when a contract makes a message call. This way the calling contract
+/// This needs to be specified when a contract makes a message call. This way the calling contract
 /// can specify the level of re-entrancy protection while the callee (and it's recursive callees) is
 /// executing.
 #[derive(Copy, Clone, PartialEq, Debug)]

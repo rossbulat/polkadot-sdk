@@ -32,7 +32,7 @@
 //!
 //! One of the main uses of the penpal chain will be to be a benefactor of reserve asset transfers
 //! with Asset Hub as the reserve. At present no derivative tokens are minted on receipt of a
-//! `ReserveAssetTransferDeposited` message but that will but the intension will be to support this
+//! `ReserveAssetTransferDeposited` message but that will but the intention will be to support this
 //! soon.
 use super::{
 	AccountId, AllPalletsWithSystem, AssetId as AssetIdPalletAssets, Assets, Authorship, Balance,

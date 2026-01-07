@@ -156,10 +156,10 @@ pub(crate) const LOG_TARGET: &str = "runtime::bags-list";
 // syntactic sugar for logging.
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: crate::LOG_TARGET,
-			concat!("[{:?}] 👜 [{}]", $patter),
+			concat!("[{:?}] 👜 [{}]", $pattern),
 			<frame_system::Pallet<T>>::block_number(),
 			<crate::Pallet::<T, I> as frame_support::traits::PalletInfoAccess>::name()
 			$(, $values)*
@@ -370,7 +370,7 @@ pub mod pallet {
 		/// Move the caller's Id directly in front of `lighter`.
 		///
 		/// The dispatch origin for this call must be _Signed_ and can only be called by the Id of
-		/// the account going in front of `lighter`. Fee is payed by the origin under all
+		/// the account going in front of `lighter`. Fee is paid by the origin under all
 		/// circumstances.
 		///
 		/// Only works if:

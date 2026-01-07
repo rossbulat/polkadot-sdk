@@ -521,7 +521,7 @@ impl<
 
 		match governance_origin {
 			// we are simulating a case of receiving an XCM
-			// and Location::Here() is not a valid destionation for XcmRouter in the fist place
+			// and Location::Here() is not a valid destination for XcmRouter in the fist place
 			GovernanceOrigin::Location(location) if location == Location::here() =>
 				panic!("Location::here() not supported, use GovernanceOrigin::Origin instead"),
 			GovernanceOrigin::Location(location) =>

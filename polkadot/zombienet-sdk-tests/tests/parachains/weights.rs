@@ -114,7 +114,7 @@ async fn weights_test() -> Result<(), anyhow::Error> {
 	}
 
 	let _ = wait_warmup_finish(collator).await;
-	log::info!("Warm-up finished, transfering ERC20 tokens");
+	log::info!("Warm-up finished, transferring ERC20 tokens");
 
 	call_contract(
 		&para_client,

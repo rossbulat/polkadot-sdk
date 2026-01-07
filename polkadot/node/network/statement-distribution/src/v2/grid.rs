@@ -51,7 +51,7 @@
 //! - All members of the group attempt to circulate all statements (in compact form) from the rest
 //!   of the group on candidates that have already been backed.
 //!   - They do this via the grid topology.
-//!   - They add the statements to their backed candidate packet for future requestors, and also:
+//!   - They add the statements to their backed candidate packet for future requesters, and also:
 //!     - send the statement to any peer, which:
 //!       - we advertised the backed candidate to (sent manifest), and:
 //!         - has previously & successfully requested the backed candidate packet, or:

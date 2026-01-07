@@ -1425,7 +1425,7 @@ pub fn dynamic_aggregated_params_internal(attrs: TokenStream, input: TokenStream
 /// * `#[pallet::weight_of_authorize($weight)]` - defines the value of the weight of the authorize
 ///   function. This attribute is similar to `#[pallet::weight]`:
 ///   * it can be ignore in `dev_mode`
-///   * it can be automatically infered from weight info. For the call `foo` the function
+///   * it can be automatically inferred from weight info. For the call `foo` the function
 ///     `authorize_foo` in the weight info will be used. (weight info needs to be provided in the
 ///     call attribute: `#[pallet::call(weight = T::WeightInfo)]`).
 ///   * it can be a fixed value like `Weight::from_all(0)` (not recommended in production).
@@ -1459,7 +1459,7 @@ pub fn authorize(_: TokenStream, _: TokenStream) -> TokenStream {
 /// Defines the value of the weight of the authorize function. This attribute is similar to
 /// `#[pallet::weight]`:
 /// * it can be ignore in `dev_mode`
-/// * it can be automatically infered from weight info. For the call `foo` the function
+/// * it can be automatically inferred from weight info. For the call `foo` the function
 ///   `authorize_foo` in the weight info will be used.
 /// * it can be a fixed value like `Weight::from_all(0)` (not recommended in production).
 #[proc_macro_attribute]

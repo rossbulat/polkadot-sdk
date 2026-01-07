@@ -33,7 +33,7 @@ use pallet_verify_signature::VerifySignature;
 use sp_keyring::Sr25519Keyring;
 use sp_runtime::{
 	generic::ExtensionVersion,
-	traits::{Applyable, Checkable, IdentityLookup, TransactionExtension},
+	traits::{Applicable, Checkable, IdentityLookup, TransactionExtension},
 	MultiSignature, MultiSigner,
 };
 

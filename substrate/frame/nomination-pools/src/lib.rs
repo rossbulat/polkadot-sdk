@@ -2234,7 +2234,7 @@ pub mod pallet {
 		///
 		/// # Conditions for a permissionless dispatch.
 		///
-		/// * The pool is blocked and the caller is either the root or bouncer. This is refereed to
+		/// * The pool is blocked and the caller is either the root or bouncer. This is referred to
 		///   as a kick.
 		/// * The pool is destroying and the member is not the depositor.
 		/// * The pool is destroying, the member is the depositor and no other members are in the

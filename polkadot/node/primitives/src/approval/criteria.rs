@@ -111,7 +111,7 @@ impl<'a> From<&'a SessionInfo> for Config {
 
 /// A trait for producing and checking assignments.
 ///
-/// Approval voting subsystem implements a a real implemention
+/// Approval voting subsystem implements a a real implementation
 /// for it and tests use a mock implementation.
 pub trait AssignmentCriteria {
 	/// Compute the assignments for the given relay VRF story.

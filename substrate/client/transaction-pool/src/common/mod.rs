@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-//! Common components re-used across different txpool implementations.
+//! Common components reused across different txpool implementations.
 
 pub(crate) mod api;
 pub(crate) mod enactment_state;

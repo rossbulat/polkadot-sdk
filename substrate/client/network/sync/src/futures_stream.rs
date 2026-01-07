@@ -31,7 +31,7 @@ pub struct FuturesStream<F> {
 	waker: Option<Waker>,
 }
 
-/// Surprizingly, `#[derive(Default)]` doesn't work on [`FuturesStream`].
+/// Surprisingly, `#[derive(Default)]` doesn't work on [`FuturesStream`].
 impl<F> Default for FuturesStream<F> {
 	fn default() -> FuturesStream<F> {
 		FuturesStream { futures: Default::default(), waker: None }

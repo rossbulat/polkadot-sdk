@@ -258,7 +258,7 @@ pub enum Outcome {
 /// XCM error and the index of the instruction that caused it.
 #[derive(Copy, Clone, Encode, Decode, DecodeWithMemTracking, Eq, PartialEq, Debug, TypeInfo)]
 pub struct InstructionError {
-	/// The index of the intruction that caused the error.
+	/// The index of the instruction that caused the error.
 	pub index: InstructionIndex,
 	/// The XCM error itself.
 	pub error: Error,

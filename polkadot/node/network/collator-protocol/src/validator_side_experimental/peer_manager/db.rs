@@ -234,7 +234,7 @@ mod tests {
 		assert_eq!(db.processed_finalized_block_number().await, Some(10));
 		assert_eq!(db.len(), 0);
 
-		// Test a query on a non-existant entry.
+		// Test a query on a non-existent entry.
 		assert_eq!(db.query(&PeerId::random(), &ParaId::from(1000)).await, None);
 
 		// Test empty update with decay.
@@ -310,7 +310,7 @@ mod tests {
 			db.query(&first_peer_id, &first_para_id).await.unwrap(),
 			Score::new(10).unwrap()
 		);
-		// Query a non-existant peer_id for this para.
+		// Query a non-existent peer_id for this para.
 		assert_eq!(db.query(&PeerId::random(), &first_para_id).await, None);
 		// Query this peer's rep for a different para.
 		assert_eq!(db.query(&first_peer_id, &ParaId::from(200)).await, None);

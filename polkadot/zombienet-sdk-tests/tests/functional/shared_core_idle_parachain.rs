@@ -72,7 +72,7 @@ async fn shared_core_idle_parachain_test() -> Result<(), anyhow::Error> {
 	let relay_client: OnlineClient<PolkadotConfig> = relay_node.wait_client().await?;
 	let alice = dev::alice();
 
-	// Assign core 0 to be shared between paraid 2000 and another, non-existant paraid 2001.
+	// Assign core 0 to be shared between paraid 2000 and another, non-existent paraid 2001.
 	let assign_core_call = subxt::tx::dynamic(
 		"Sudo",
 		"sudo",

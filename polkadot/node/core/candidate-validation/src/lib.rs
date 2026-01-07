@@ -503,7 +503,7 @@ where
 	Sender: SubsystemSender<RuntimeApiMessage>,
 {
 	// In spite of function name here we request past, present and future authorities.
-	// It's ok to stil prepare PVFs in other cases, but better to request only future ones.
+	// It's ok to still prepare PVFs in other cases, but better to request only future ones.
 	let Ok(Ok(authorities)) = util::request_authorities(relay_parent, sender).await.await else {
 		gum::warn!(
 			target: LOG_TARGET,

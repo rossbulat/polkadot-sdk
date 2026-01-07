@@ -41,7 +41,7 @@ use crate::{
 };
 
 /// Interface to a basic block import queue that is importing blocks sequentially in a separate
-/// task, with plugable verification.
+/// task, with pluggable verification.
 pub struct BasicQueue<B: BlockT> {
 	/// Handle for sending justification and block import messages to the background task.
 	handle: BasicQueueHandle<B>,

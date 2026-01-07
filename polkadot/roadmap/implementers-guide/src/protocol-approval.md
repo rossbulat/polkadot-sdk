@@ -73,7 +73,7 @@ We need two separate keys for the approval subsystem:
 
 - **Approval vote keys** would only sign off on candidate parablock validity and has no natural key type restrictions.
   There's no need for this to actually embody a new session key type. We just want to make a distinction between
-  assignments and approvals, although distant future node configurations might favor separate roles. We re-use the same
+  assignments and approvals, although distant future node configurations might favor separate roles. We reuse the same
   keys as are used for parachain backing in practice.
 
 Approval vote keys could relatively easily be handled by some hardened signer tooling, perhaps even HSMs assuming we

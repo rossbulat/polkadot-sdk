@@ -287,7 +287,7 @@ fn deregister_handles_basic_errors() {
 		assert_noop!(mock::Registrar::deregister(RuntimeOrigin::signed(2), para_id,), BadOrigin);
 		assert_ok!(mock::Registrar::make_parachain(para_id));
 		run_to_session(START_SESSION_INDEX + 4);
-		// Cant directly deregister parachain
+		// Can't directly deregister parachain
 		assert_noop!(
 			mock::Registrar::deregister(RuntimeOrigin::root(), para_id,),
 			Error::<Test>::NotParathread

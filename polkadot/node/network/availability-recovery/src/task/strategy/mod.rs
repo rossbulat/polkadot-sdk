@@ -127,11 +127,11 @@ async fn do_post_recovery_check(
 ) -> Result<AvailableData, RecoveryError> {
 	let mut erasure_task_tx = params.erasure_task_tx.clone();
 	match params.post_recovery_check {
-		PostRecoveryCheck::Reencode => {
+		PostRecoveryCheck::Re-encode => {
 			// Send request to re-encode the chunks and check merkle root.
 			let (reencode_tx, reencode_rx) = oneshot::channel();
 			erasure_task_tx
-				.send(ErasureTask::Reencode(
+				.send(ErasureTask::Re-encode(
 					params.n_validators,
 					params.erasure_root,
 					data,
@@ -677,7 +677,7 @@ mod tests {
 				erasure_root: dummy_hash(),
 				metrics: Metrics::new_dummy(),
 				bypass_availability_store: false,
-				post_recovery_check: PostRecoveryCheck::Reencode,
+				post_recovery_check: PostRecoveryCheck::Re-encode,
 				pov_hash: dummy_hash(),
 				req_v1_protocol_name: "/req_chunk/1".into(),
 				req_v2_protocol_name: "/req_chunk/2".into(),

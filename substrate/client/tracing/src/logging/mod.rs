@@ -256,7 +256,7 @@ impl LoggerBuilder {
 		self
 	}
 
-	/// Wether or not to disable log reloading.
+	/// Whether or not to disable log reloading.
 	pub fn with_log_reloading(&mut self, enabled: bool) -> &mut Self {
 		self.log_reloading = enabled;
 		self

@@ -703,7 +703,7 @@ mod disabling_byzantine_threshold {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_none() && disabling_decision.reenable.is_none());
+			assert!(disabling_decision.disable.is_none() && disabling_decision.re-enable.is_none());
 		});
 	}
 }
@@ -736,7 +736,7 @@ mod disabling_with_reenabling {
 
 			// Disable Offender and do not re-enable anyone
 			assert_eq!(disabling_decision.disable, Some(OFFENDER_VALIDATOR_IDX));
-			assert_eq!(disabling_decision.reenable, None);
+			assert_eq!(disabling_decision.re-enable, None);
 		});
 	}
 
@@ -753,10 +753,10 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_some() && disabling_decision.reenable.is_some());
+			assert!(disabling_decision.disable.is_some() && disabling_decision.re-enable.is_some());
 			// Disable 7 and enable 1
 			assert_eq!(disabling_decision.disable.unwrap(), OFFENDER_VALIDATOR_IDX);
-			assert_eq!(disabling_decision.reenable.unwrap(), 0);
+			assert_eq!(disabling_decision.re-enable.unwrap(), 0);
 		});
 	}
 
@@ -773,7 +773,7 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_none() && disabling_decision.reenable.is_none());
+			assert!(disabling_decision.disable.is_none() && disabling_decision.re-enable.is_none());
 
 			assert_ok!(Session::do_try_state());
 		});
@@ -792,10 +792,10 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_some() && disabling_decision.reenable.is_some());
+			assert!(disabling_decision.disable.is_some() && disabling_decision.re-enable.is_some());
 			// Disable 7 and enable 1
 			assert_eq!(disabling_decision.disable.unwrap(), OFFENDER_VALIDATOR_IDX);
-			assert_eq!(disabling_decision.reenable.unwrap(), 0);
+			assert_eq!(disabling_decision.re-enable.unwrap(), 0);
 
 			assert_ok!(Session::do_try_state());
 		});
@@ -814,10 +814,10 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_some() && disabling_decision.reenable.is_some());
+			assert!(disabling_decision.disable.is_some() && disabling_decision.re-enable.is_some());
 			// Disable 7 and enable 1
 			assert_eq!(disabling_decision.disable.unwrap(), OFFENDER_VALIDATOR_IDX);
-			assert_eq!(disabling_decision.reenable.unwrap(), 1);
+			assert_eq!(disabling_decision.re-enable.unwrap(), 1);
 		});
 	}
 
@@ -835,7 +835,7 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_some() && disabling_decision.reenable.is_none());
+			assert!(disabling_decision.disable.is_some() && disabling_decision.re-enable.is_none());
 			// Disable 7 "again" AKA update their severity
 			assert_eq!(disabling_decision.disable.unwrap(), OFFENDER_VALIDATOR_IDX);
 		});
@@ -855,7 +855,7 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_none() && disabling_decision.reenable.is_none());
+			assert!(disabling_decision.disable.is_none() && disabling_decision.re-enable.is_none());
 		});
 	}
 
@@ -873,7 +873,7 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			assert!(disabling_decision.disable.is_none() && disabling_decision.reenable.is_none());
+			assert!(disabling_decision.disable.is_none() && disabling_decision.re-enable.is_none());
 		});
 	}
 }

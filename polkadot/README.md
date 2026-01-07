@@ -173,7 +173,7 @@ You can run the tests if you like:
 
 ```bash
 cargo test --workspace --profile testnet
-# Or run only the tests for specified crated
+# Or run only the tests for specified created
 cargo test -p <crate-name> --profile testnet
 ```
 

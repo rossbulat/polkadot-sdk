@@ -162,7 +162,7 @@ pub trait OnReapIdentity<AccountId> {
 	/// - `subs`: The number of sub-accounts they had.
 	fn on_reap_identity(who: &AccountId, bytes: u32, subs: u32) -> DispatchResult;
 
-	/// Ensure that identity reaping will be succesful in benchmarking.
+	/// Ensure that identity reaping will be successful in benchmarking.
 	///
 	/// Should setup the state in a way that the same call ot `[Self::on_reap_identity]` will be
 	/// successful.

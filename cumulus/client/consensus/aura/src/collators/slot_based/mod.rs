@@ -135,7 +135,7 @@ pub struct Params<Block, BI, CIDP, Client, Backend, RClient, CHP, Proposer, CS, 
 	pub authoring_duration: Duration,
 	/// Whether we should reinitialize the collator config (i.e. we are transitioning to aura).
 	pub reinitialize: bool,
-	/// Offset slots by a fixed duration. This can be used to create more preferrable authoring
+	/// Offset slots by a fixed duration. This can be used to create more preferable authoring
 	/// timings.
 	pub slot_offset: Duration,
 	/// The handle returned by [`SlotBasedBlockImport`].

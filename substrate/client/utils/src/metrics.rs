@@ -30,12 +30,12 @@ use prometheus::{
 
 pub static TOKIO_THREADS_TOTAL: LazyLock<GenericCounter<AtomicU64>> = LazyLock::new(|| {
 	GenericCounter::new("substrate_tokio_threads_total", "Total number of threads created")
-		.expect("Creating of statics doesn't fail. qed")
+		.expect("Creating of statistics doesn't fail. qed")
 });
 
 pub static TOKIO_THREADS_ALIVE: LazyLock<GenericGauge<AtomicU64>> = LazyLock::new(|| {
 	GenericGauge::new("substrate_tokio_threads_alive", "Number of threads alive right now")
-		.expect("Creating of statics doesn't fail. qed")
+		.expect("Creating of statistics doesn't fail. qed")
 });
 
 pub static UNBOUNDED_CHANNELS_COUNTER: LazyLock<GenericCounterVec<AtomicU64>> =
@@ -47,7 +47,7 @@ pub static UNBOUNDED_CHANNELS_COUNTER: LazyLock<GenericCounterVec<AtomicU64>> =
 			),
 			&["entity", "action"], // name of channel, send|received|dropped
 		)
-		.expect("Creating of statics doesn't fail. qed")
+		.expect("Creating of statistics doesn't fail. qed")
 	});
 
 pub static UNBOUNDED_CHANNELS_SIZE: LazyLock<GenericGaugeVec<AtomicU64>> = LazyLock::new(|| {
@@ -58,14 +58,14 @@ pub static UNBOUNDED_CHANNELS_SIZE: LazyLock<GenericGaugeVec<AtomicU64>> = LazyL
 		),
 		&["entity"], // name of channel
 	)
-	.expect("Creating of statics doesn't fail. qed")
+	.expect("Creating of statistics doesn't fail. qed")
 });
 
 pub static SENT_LABEL: &'static str = "send";
 pub static RECEIVED_LABEL: &'static str = "received";
 pub static DROPPED_LABEL: &'static str = "dropped";
 
-/// Register the statics to report to registry
+/// Register the statistics to report to registry
 pub fn register_globals(registry: &Registry) -> Result<(), PrometheusError> {
 	registry.register(Box::new(TOKIO_THREADS_ALIVE.clone()))?;
 	registry.register(Box::new(TOKIO_THREADS_TOTAL.clone()))?;

@@ -414,7 +414,7 @@ where
 		self.known_views.insert(block_hash);
 	}
 
-	/// Removes an existing aggreagated transaction status stream.
+	/// Removes an existing aggregated transaction status stream.
 	///
 	/// Removes an aggregated transaction status stream associated with a specific block hash from
 	/// the stream map.
@@ -483,7 +483,7 @@ where
 					match cmd {
 						Some(ControllerCommand::AddViewStream(h,stream)) => {
 							aggregated_streams_map.insert(h,stream);
-							// //todo: aysnc and join all?
+							// //todo: async and join all?
 							external_watchers_tx_hash_map.write().retain(|tx_hash, ctrl| {
 								ctrl.unbounded_send(ExternalWatcherCommand::AddView(h))
 									.inspect_err(|error| {
@@ -494,7 +494,7 @@ where
 						},
 						Some(ControllerCommand::RemoveViewStream(h)) => {
 							aggregated_streams_map.remove(&h);
-							//todo: aysnc and join all?
+							//todo: async and join all?
 							external_watchers_tx_hash_map.write().retain(|tx_hash, ctrl| {
 								ctrl.unbounded_send(ExternalWatcherCommand::RemoveView(h))
 									.inspect_err(|error| {
@@ -1086,7 +1086,7 @@ mod tests {
 
 		// Note: this generates actual Invalid event.
 		// Invalid event from View's stream is intentionally ignored .
-		// we need to explicitely remove the view
+		// we need to explicitly remove the view
 		listener.remove_view(block_hash0);
 		listener.transactions_invalidated(&[tx_hash]);
 

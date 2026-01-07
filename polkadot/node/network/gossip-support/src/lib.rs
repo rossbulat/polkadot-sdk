@@ -356,7 +356,7 @@ where
 	/// Build the gossip topology for the session of the last finalized block if we haven't built
 	/// one.
 	///
-	/// This is needed to ensure that if finality is lagging accross session boundary and a restart
+	/// This is needed to ensure that if finality is lagging across session boundary and a restart
 	/// happens after the new session started, we built a topology from the session we haven't
 	/// finalized the blocks yet.
 	/// Once finalized blocks start to be from a session we've built a topology for, we can stop.

@@ -108,14 +108,14 @@ impl<AssetId, Instance> MatchesNonFungibles<AssetId, Instance> for Tuple {
 
 /// Unique instances matcher trait.
 ///
-/// The `Id` type should be defined in such a way so that its value can unambigiously identify an
+/// The `Id` type should be defined in such a way so that its value can unambiguously identify an
 /// instance. I.e., if instances are grouped (e.g., as tokens in an NFT collection), the `Id` should
 /// contain both the group ID and the item group-local ID.
 ///
 /// This unified interface allows us to avoid duplicating the XCM adapters for non-grouped and
 /// grouped instances.
 ///
-/// NOTE: The trait implementors should follow the convention of identifying the collection-less
+/// NOTE: The trait implementers should follow the convention of identifying the collection-less
 /// NFTs by an XCM `Asset` of the form `{ asset_id: NFT_ID, fun:
 /// Fungibility::NonFungible(AssetInstance::Undefined) }`.
 pub trait MatchesInstance<Id> {

@@ -226,7 +226,7 @@ pub trait NetworkDHTProvider {
 
 	/// Start putting the record to `peers`.
 	///
-	/// If `update_local_storage` is true the local storage is udpated as well.
+	/// If `update_local_storage` is true the local storage is updated as well.
 	fn put_record_to(&self, record: Record, peers: HashSet<PeerId>, update_local_storage: bool);
 
 	/// Store a record in the DHT memory store.

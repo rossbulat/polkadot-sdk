@@ -358,7 +358,7 @@ impl TelemetryWorker {
 	}
 }
 
-/// Handle to the [`TelemetryWorker`] thats allows initializing the telemetry for a Substrate node.
+/// Handle to the [`TelemetryWorker`] that's allows initializing the telemetry for a Substrate node.
 #[derive(Debug, Clone)]
 pub struct TelemetryWorkerHandle {
 	message_sender: mpsc::Sender<TelemetryMessage>,

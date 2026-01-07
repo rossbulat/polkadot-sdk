@@ -36,10 +36,10 @@ use pallet_election_provider_multi_phase::CurrentPhase;
 // syntactic sugar for logging.
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: crate::LOG_TARGET,
-			concat!("🛠️  ", $patter)  $(, $values)*
+			concat!("🛠️  ", $pattern)  $(, $values)*
 		)
 	};
 }
@@ -382,7 +382,7 @@ fn automatic_unbonding_pools() {
 			staking_events(),
 			[
 				// auto-withdraw happened as expected to release 2's unbonding funds, but the funds
-				// were not transferred to 2 and stay in the pool's transferrable balance instead.
+				// were not transferred to 2 and stay in the pool's transferable balance instead.
 				pallet_staking::Event::Withdrawn { stash: pool_bonded_account, amount: 10 },
 				pallet_staking::Event::Unbonded { stash: pool_bonded_account, amount: 10 }
 			]

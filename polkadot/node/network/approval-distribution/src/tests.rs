@@ -85,7 +85,7 @@ fn test_harness<T: Future<Output = VirtualOverseer>>(
 					&mut session_info_provider,
 				)
 				.await;
-			tx.send(()).expect("Fail to notify subystem is done");
+			tx.send(()).expect("Fail to notify subsystem is done");
 		};
 
 		let test_fut = test_fn(virtual_overseer);
@@ -975,11 +975,11 @@ fn peer_sending_us_duplicates_while_aggression_enabled_is_ok() {
 			// now we should
 			expect_reputation_change(overseer, peer, COST_DUPLICATE_MESSAGE).await;
 
-			// Peers will be continously punished for sending duplicates until approval-distribution
+			// Peers will be continuously punished for sending duplicates until approval-distribution
 			// aggression kicks, at which point they aren't anymore.
 			let mut parent_hash = hash;
 			for level in 0..16 {
-				// As long as the lag is bellow l1 aggression, punish peers for duplicates.
+				// As long as the lag is below l1 aggression, punish peers for duplicates.
 				send_message_from_peer_v3(overseer, peer, msg.clone()).await;
 				expect_reputation_change(overseer, peer, COST_DUPLICATE_MESSAGE).await;
 

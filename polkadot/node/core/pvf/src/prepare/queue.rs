@@ -117,7 +117,7 @@ impl Unscheduled {
 		self.queue_mut(prio).push_back(job);
 	}
 
-	fn readd(&mut self, prio: Priority, job: Job) {
+	fn re_add(&mut self, prio: Priority, job: Job) {
 		self.queue_mut(prio).push_front(job);
 	}
 
@@ -396,7 +396,7 @@ async fn handle_worker_rip(queue: &mut Queue, worker: Worker) -> Result<(), Fata
 			never!("the job of the ripped worker must be known but it is not");
 			Priority::Normal
 		});
-		queue.unscheduled.readd(priority, job);
+		queue.unscheduled.re_add(priority, job);
 	}
 
 	// If there are still jobs left, spawn another worker to replace the ripped one (but only if it

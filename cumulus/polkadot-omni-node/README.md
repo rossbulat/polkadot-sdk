@@ -38,7 +38,7 @@ The interface mandates the runtime to expose a [`named-preset`](https://docs.rs/
 
 **Note**: `chain-spec-builder` binary is published on [`crates.io`](https://crates.io) under
 [`staging-chain-spec-builder`](https://crates.io/crates/staging-chain-spec-builder) due to a name conflict.
-Install it with `cargo` like bellow :
+Install it with `cargo` like below :
 
 ```bash
 cargo install staging-chain-spec-builder --locked
@@ -53,13 +53,13 @@ local variants are available only for a build of `polkadot-omni-node` with
 `westend-native` and `rococo-native` features respectively.
 
 <!-- TODO: https://github.com/paritytech/polkadot-sdk/issues/8747 -->
-Additionaly, the `--para-id` flag can be used to set the JSON key named `para_id`. This flag is used
+Additionally, the `--para-id` flag can be used to set the JSON key named `para_id`. This flag is used
 by nodes to determine the parachain id, and it is especially useful when the parachain id can not be
 fetched from the runtime, when the state points to a runtime that does not implement the
 `cumulus_primitives_core::GetParachainInfo` runtime API. It is recommended for runtimes to implement
 the runtime API and be upgraded on chain.
 
-Example command bellow:
+Example command below:
 
 ```bash
 chain-spec-builder create --relay-chain <relay_chain_id> --para-id <id> -r <runtime.wasm> named-preset <preset_name>

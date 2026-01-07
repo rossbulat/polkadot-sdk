@@ -367,7 +367,7 @@ where
 
 /// Provides the final prefix for a [`StoragePagedList`].
 ///
-/// It solely exists so that when re-using it from the iterator and meta struct, none of the un-used
+/// It solely exists so that when reusing it from the iterator and meta struct, none of the un-used
 /// generics bleed through. Otherwise when only having the `StoragePrefixedContainer` implementation
 /// on the list directly, the iterator and metadata need to muster *all* generics, even the ones
 /// that are completely useless for prefix calculation.

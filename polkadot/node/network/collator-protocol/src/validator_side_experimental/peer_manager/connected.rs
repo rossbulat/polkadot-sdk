@@ -27,7 +27,7 @@ use std::{
 	num::NonZeroU16,
 };
 
-/// Keeps track of connected peers, together with relevant info such as their procotol versions,
+/// Keeps track of connected peers, together with relevant info such as their protocol versions,
 /// declared paraids and reputations.
 #[derive(Clone)]
 pub struct ConnectedPeers {
@@ -938,7 +938,7 @@ mod tests {
 
 		assert_eq!(connected.peer_info(&first_peer), None);
 
-		// Try handling a Declare statement from a non-existant peer. Should be a no-op
+		// Try handling a Declare statement from a non-existent peer. Should be a no-op
 		assert_eq!(connected.declared(first_peer, ParaId::from(1)), DeclarationOutcome::Rejected);
 
 		assert_eq!(connected.peer_info(&first_peer), None);
@@ -1054,7 +1054,7 @@ mod tests {
 
 		assert_eq!(connected.peer_info(&first_peer), None);
 
-		// Try removing a non-existant peer. Should be a no-op
+		// Try removing a non-existent peer. Should be a no-op
 		connected.remove(&first_peer);
 
 		assert_eq!(connected.peer_info(&first_peer), None);
@@ -1151,7 +1151,7 @@ mod tests {
 			assert_eq!(per_para.get_score(&first_peer), None);
 		}
 
-		// Update for a non-existant peer. No-op.
+		// Update for a non-existent peer. No-op.
 		connected.update_reputation(ReputationUpdate {
 			peer_id: first_peer,
 			para_id: ParaId::from(1),

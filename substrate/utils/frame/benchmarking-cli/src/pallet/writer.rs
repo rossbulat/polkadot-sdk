@@ -633,7 +633,7 @@ pub(crate) fn process_storage_results(
 				// Use best effort in this case since failing would be really annoying.
 				(None, None, PovEstimationMode::MaxEncodedLen) => {
 					// We add the overhead for a single read each time. In a more advanced version
-					// we could take node re-using into account and over-estimate a bit less.
+					// we could take node reusing into account and over-estimate a bit less.
 					prefix_result.proof_size += pov_overhead * *reads;
 					PovEstimationMode::Measured
 				},

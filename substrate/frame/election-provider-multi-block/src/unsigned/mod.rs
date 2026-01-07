@@ -111,7 +111,7 @@ mod pallet {
 		/// attempts to submit the worker's solution.
 		type OffchainRepeat: Get<BlockNumberFor<Self>>;
 
-		/// The solver used in hte offchain worker miner
+		/// The solver used in the offchain worker miner
 		type OffchainSolver: frame_election_provider_support::NposSolver<
 			AccountId = Self::AccountId,
 		>;

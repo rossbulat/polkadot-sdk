@@ -174,7 +174,7 @@ pub struct Worker<Client, Block: BlockT, DhtEventStream> {
 
 	/// Set of lookups we can still receive records.
 	/// These are the entries in the `in_flight_lookups` for which
-	/// we got at least one successfull result.
+	/// we got at least one successful result.
 	known_lookups: HashMap<KademliaKey, AuthorityId>,
 
 	/// Last known record by key, here we always keep the record with
@@ -952,7 +952,7 @@ where
 		Ok(())
 	}
 
-	// Handles receiving a new DHT record for the authorithy.
+	// Handles receiving a new DHT record for the authority.
 	// Returns true if the record was new, false if the record was older than the current one.
 	fn handle_new_record(
 		&mut self,

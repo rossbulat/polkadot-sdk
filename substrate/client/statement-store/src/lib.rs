@@ -902,7 +902,7 @@ impl StatementStore for Store {
 		if encoded_size > MAX_STATEMENT_SIZE {
 			log::debug!(
 				target: LOG_TARGET,
-				"Statement is too big for propogation: {:?} ({}/{} bytes)",
+				"Statement is too big for propagation: {:?} ({}/{} bytes)",
 				HexDisplay::from(&hash),
 				statement.encoded_size(),
 				MAX_STATEMENT_SIZE

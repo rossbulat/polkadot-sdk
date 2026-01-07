@@ -564,7 +564,7 @@ fn dont_double_vote_for_pvfs_in_view() {
 			// Pre-checking will take quite some time.
 			let pre_check = test_state.expect_candidate_precheck(&mut handle).await;
 
-			// Activate a sibiling leaf, has the same PVF.
+			// Activate a sibling leaf, has the same PVF.
 			test_state.activate_leaf(&mut handle, block_2_1).await;
 			test_state.expect_pvfs_require_precheck(&mut handle).await.reply_mock();
 			test_state.expect_session_for_child(&mut handle).await;
@@ -615,7 +615,7 @@ fn judgements_come_out_of_order() {
 
 			let pre_check_1 = test_state.expect_candidate_precheck(&mut handle).await;
 
-			// Activate a sibiling leaf, has the second PVF.
+			// Activate a sibling leaf, has the second PVF.
 			test_state.activate_leaf(&mut handle, block_2).await;
 			test_state.expect_pvfs_require_precheck(&mut handle).await.reply_mock();
 			test_state.expect_session_for_child(&mut handle).await;
