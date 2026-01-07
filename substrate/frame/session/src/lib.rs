@@ -586,7 +586,7 @@ pub mod pallet {
 		NewQueued,
 		/// Validator has been disabled.
 		ValidatorDisabled { validator: T::ValidatorId },
-		/// Validator has been re-enabled.
+		/// Validator has been reenabled.
 		ValidatorReenabled { validator: T::ValidatorId },
 	}
 
@@ -1067,7 +1067,7 @@ impl<T: Config> Pallet<T> {
 		}
 
 		// Re-enable
-		if let Some(reenable_idx) = decision.re-enable {
+		if let Some(reenable_idx) = decision.reenable {
 			Self::reenable_index(reenable_idx);
 		}
 	}
