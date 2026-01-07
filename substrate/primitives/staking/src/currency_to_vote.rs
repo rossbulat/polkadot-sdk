@@ -31,7 +31,7 @@ use sp_runtime::{
 ///
 /// the total issuance being passed in implies that the implementation must be aware of the fact
 /// that its values can affect the outcome. This implies that if the vote value is dependent on the
-/// total issuance, it should never ber written to storage for later reuse.
+/// total issuance, it should never be written to storage for later reuse.
 pub trait CurrencyToVote<B> {
 	/// Convert balance to u64.
 	fn to_vote(value: B, issuance: B) -> u64;
