@@ -54,7 +54,7 @@ pub trait TrieCacheProvider<H: Hasher> {
 	///
 	/// The `storage_root` parameter *must* be the storage root of the trie this cache is used for.
 	///
-	/// NOTE: Implementors should use the `storage_root` to differentiate between storage keys that
+	/// NOTE: Implementers should use the `storage_root` to differentiate between storage keys that
 	/// may belong to different tries.
 	fn as_trie_db_cache(&self, storage_root: H::Out) -> Self::Cache<'_>;
 

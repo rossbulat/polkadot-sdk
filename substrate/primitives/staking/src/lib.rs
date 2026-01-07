@@ -656,7 +656,7 @@ pub trait DelegationInterface {
 
 	/// Apply a pending slash to an `Agent` by slashing `value` from `delegator`.
 	///
-	/// A reporter may be provided (if one exists) in order for the implementor to reward them,
+	/// A reporter may be provided (if one exists) in order for the implementer to reward them,
 	/// if applicable.
 	fn delegator_slash(
 		agent: Agent<Self::AccountId>,

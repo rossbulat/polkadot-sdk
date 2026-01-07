@@ -1489,7 +1489,7 @@ impl SignaturePayload for () {
 	type SignatureExtra = ();
 }
 
-/// Implementor is an [`Extrinsic`] and provides metadata about this extrinsic.
+/// Implementer is an [`Extrinsic`] and provides metadata about this extrinsic.
 pub trait ExtrinsicMetadata {
 	/// The format versions of the `Extrinsic`.
 	///
@@ -1835,15 +1835,15 @@ pub trait SignedExtension:
 /// Also provides information on to whom this information is attributable and an index that allows
 /// each piece of attributable information to be disambiguated.
 ///
-/// IMPORTANT: After validation, in both [validate](Applyable::validate) and
-/// [apply](Applyable::apply), all transactions should have *some* authorized origin, except for
+/// IMPORTANT: After validation, in both [validate](Applicable::validate) and
+/// [apply](Applicable::apply), all transactions should have *some* authorized origin, except for
 /// inherents. This is necessary in order to protect the chain against spam. If no extension in the
 /// transaction extension pipeline authorized the transaction with an origin, either a system signed
 /// origin or a custom origin, then the transaction must be rejected, as the extensions provided in
 /// substrate which protect the chain, such as `CheckNonce`, `ChargeTransactionPayment` etc., rely
 /// on the assumption that the system handles system signed transactions, and the pallets handle the
 /// custom origin that they authorized.
-pub trait Applyable: Sized + Send + Sync {
+pub trait Applicable: Sized + Send + Sync {
 	/// Type by which we can dispatch. Restricts the `UnsignedValidator` type.
 	type Call: Dispatchable;
 

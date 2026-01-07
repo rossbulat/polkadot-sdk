@@ -41,7 +41,7 @@ where
 	///
 	/// As such, for aggregatable signatures, proof of possession consists of two signatures one
 	/// regular signature signing the owner identity and the second one with unique context
-	/// which signs the correspoding public key (and nothing else).
+	/// which signs the corresponding public key (and nothing else).
 	#[cfg(feature = "full_crypto")]
 	fn generate_proof_of_possession(&mut self, owner: &[u8]) -> Self::ProofOfPossession;
 }

@@ -178,7 +178,7 @@ pub trait WeightToFee {
 
 /// A trait that describes the weight to fee calculation as polynomial.
 ///
-/// An implementor should only implement the `polynomial` function.
+/// An implementer should only implement the `polynomial` function.
 pub trait WeightToFeePolynomial {
 	/// The type that is returned as result from polynomial evaluation.
 	type Balance: BaseArithmetic + From<u32> + Copy + Unsigned;
@@ -208,7 +208,7 @@ where
 	}
 }
 
-/// Implementor of `WeightToFee` that maps one unit of weight to one unit of fee.
+/// Implementer of `WeightToFee` that maps one unit of weight to one unit of fee.
 pub struct IdentityFee<T>(core::marker::PhantomData<T>);
 
 impl<T> WeightToFee for IdentityFee<T>
@@ -222,7 +222,7 @@ where
 	}
 }
 
-/// Implementor of [`WeightToFee`] such that it maps any unit of weight to a fixed fee.
+/// Implementer of [`WeightToFee`] such that it maps any unit of weight to a fixed fee.
 pub struct FixedFee<const F: u32, T>(core::marker::PhantomData<T>);
 
 impl<const F: u32, T> WeightToFee for FixedFee<F, T>
@@ -239,7 +239,7 @@ where
 /// An implementation of [`WeightToFee`] that collects no fee.
 pub type NoFee<T> = FixedFee<0, T>;
 
-/// Implementor of [`WeightToFee`] that uses a constant multiplier.
+/// Implementer of [`WeightToFee`] that uses a constant multiplier.
 ///
 /// # Example
 ///

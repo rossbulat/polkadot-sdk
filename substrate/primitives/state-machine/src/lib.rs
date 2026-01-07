@@ -265,7 +265,7 @@ mod execution {
 			self
 		}
 
-		/// Execute a call using the given state backend, overlayed changes, and call executor.
+		/// Execute a call using the given state backend, overlaid changes, and call executor.
 		///
 		/// On an error, no prospective changes are written to the overlay.
 		///
@@ -311,7 +311,7 @@ mod execution {
 		}
 	}
 
-	/// Prove execution using the given state backend, overlayed changes, and call executor.
+	/// Prove execution using the given state backend, overlaid changes, and call executor.
 	pub fn prove_execution<B, H, Exec>(
 		backend: &mut B,
 		overlay: &mut OverlayedChanges<H>,
@@ -338,7 +338,7 @@ mod execution {
 		)
 	}
 
-	/// Prove execution using the given trie backend, overlayed changes, and call executor.
+	/// Prove execution using the given trie backend, overlaid changes, and call executor.
 	/// Produces a state-backend-specific "transaction" which can be used to apply the changes
 	/// to the backing store, such as the disk.
 	/// Execution proof is the set of all 'touched' storage DBValues from the backend.
@@ -1494,7 +1494,7 @@ mod tests {
 			assert_eq!(ext.storage(key.as_slice()), None);
 		}
 
-		// Remove gets commited and merged into previous transaction
+		// Remove gets committed and merged into previous transaction
 		overlay.commit_transaction().unwrap();
 		{
 			let mut ext = Ext::new(&mut overlay, backend, None);

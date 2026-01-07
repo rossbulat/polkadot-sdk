@@ -31,7 +31,7 @@
 //! 2. [`GenesisBuilder::get_preset`]: Given a `PresetId`, this the runtime returns the JSON blob
 //!    representation of the `RuntimeGenesisConfig` for that preset. This JSON blob is often mixed
 //!    into the broader `chain_spec`. If `None` is given, [`GenesisBuilder::get_preset`] provides a
-//!    JSON represention of the default `RuntimeGenesisConfig` (by simply serializing the
+//!    JSON representation of the default `RuntimeGenesisConfig` (by simply serializing the
 //!    `RuntimeGenesisConfig::default()` value into JSON format). This is used as a base for
 //!    applying patches / presets.
 

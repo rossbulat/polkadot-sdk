@@ -54,7 +54,7 @@ pub enum ExtrinsicFormat<AccountId, Extension> {
 /// Definition of something that the external world might want to say; its existence implies that it
 /// has been checked and is good, particularly with regards to the signature.
 ///
-/// This is typically passed into [`traits::Applyable::apply`], which should execute
+/// This is typically passed into [`traits::Applicable::apply`], which should execute
 /// [`CheckedExtrinsic::function`], alongside all other bits and bobs.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct CheckedExtrinsic<AccountId, Call, Extension> {
@@ -66,7 +66,7 @@ pub struct CheckedExtrinsic<AccountId, Call, Extension> {
 	pub function: Call,
 }
 
-impl<AccountId, Call, Extension, RuntimeOrigin> traits::Applyable
+impl<AccountId, Call, Extension, RuntimeOrigin> traits::Applicable
 	for CheckedExtrinsic<AccountId, Call, Extension>
 where
 	AccountId: Member + MaybeDisplay,

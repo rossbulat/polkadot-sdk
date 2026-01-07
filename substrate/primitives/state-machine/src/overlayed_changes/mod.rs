@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//! The overlayed changes to state.
+//! The overlaid changes to state.
 
 mod changeset;
 mod offchain;
@@ -809,7 +809,7 @@ where
 	}
 }
 
-/// An overlayed extension is either a mutable reference
+/// An overlaid extension is either a mutable reference
 /// or an owned extension.
 #[cfg(feature = "std")]
 pub enum OverlayedExtension<'a> {
@@ -827,7 +827,7 @@ impl OverlayedExtension<'_> {
 	}
 }
 
-/// Overlayed extensions which are sourced from [`Extensions`].
+/// Overlaid extensions which are sourced from [`Extensions`].
 ///
 /// The sourced extensions will be stored as mutable references,
 /// while extensions that are registered while execution are stored
@@ -926,35 +926,35 @@ mod tests {
 
 	#[test]
 	fn overlayed_storage_works() {
-		let mut overlayed = OverlayedChanges::<Blake2Hasher>::default();
+		let mut overlaid = OverlayedChanges::<Blake2Hasher>::default();
 
 		let key = vec![42, 69, 169, 142];
 
-		assert!(overlayed.storage(&key).is_none());
+		assert!(overlaid.storage(&key).is_none());
 
-		overlayed.start_transaction();
+		overlaid.start_transaction();
 
-		overlayed.set_storage(key.clone(), Some(vec![1, 2, 3]));
-		assert_eq!(overlayed.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
+		overlaid.set_storage(key.clone(), Some(vec![1, 2, 3]));
+		assert_eq!(overlaid.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
 
-		overlayed.commit_transaction().unwrap();
+		overlaid.commit_transaction().unwrap();
 
-		assert_eq!(overlayed.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
+		assert_eq!(overlaid.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
 
-		overlayed.start_transaction();
+		overlaid.start_transaction();
 
-		overlayed.set_storage(key.clone(), Some(vec![]));
-		assert_eq!(overlayed.storage(&key).unwrap(), Some(&[][..]));
+		overlaid.set_storage(key.clone(), Some(vec![]));
+		assert_eq!(overlaid.storage(&key).unwrap(), Some(&[][..]));
 
-		overlayed.set_storage(key.clone(), None);
-		assert!(overlayed.storage(&key).unwrap().is_none());
+		overlaid.set_storage(key.clone(), None);
+		assert!(overlaid.storage(&key).unwrap().is_none());
 
-		overlayed.rollback_transaction().unwrap();
+		overlaid.rollback_transaction().unwrap();
 
-		assert_eq!(overlayed.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
+		assert_eq!(overlaid.storage(&key).unwrap(), Some(&[1, 2, 3][..]));
 
-		overlayed.set_storage(key.clone(), None);
-		assert!(overlayed.storage(&key).unwrap().is_none());
+		overlaid.set_storage(key.clone(), None);
+		assert!(overlaid.storage(&key).unwrap().is_none());
 	}
 
 	#[test]
@@ -983,35 +983,35 @@ mod tests {
 			assert_eq!(offchain_data, expected);
 		}
 
-		let mut overlayed = OverlayedChanges::default();
+		let mut overlaid = OverlayedChanges::default();
 
 		let key = vec![42, 69, 169, 142];
 
-		check_offchain_content(&overlayed, 0, vec![]);
+		check_offchain_content(&overlaid, 0, vec![]);
 
-		overlayed.start_transaction();
+		overlaid.start_transaction();
 
-		overlayed.set_offchain_storage(key.as_slice(), Some(&[1, 2, 3][..]));
-		check_offchain_content(&overlayed, 1, vec![(key.clone(), Some(vec![1, 2, 3]))]);
+		overlaid.set_offchain_storage(key.as_slice(), Some(&[1, 2, 3][..]));
+		check_offchain_content(&overlaid, 1, vec![(key.clone(), Some(vec![1, 2, 3]))]);
 
-		overlayed.commit_transaction().unwrap();
+		overlaid.commit_transaction().unwrap();
 
-		check_offchain_content(&overlayed, 0, vec![(key.clone(), Some(vec![1, 2, 3]))]);
+		check_offchain_content(&overlaid, 0, vec![(key.clone(), Some(vec![1, 2, 3]))]);
 
-		overlayed.start_transaction();
+		overlaid.start_transaction();
 
-		overlayed.set_offchain_storage(key.as_slice(), Some(&[][..]));
-		check_offchain_content(&overlayed, 1, vec![(key.clone(), Some(vec![]))]);
+		overlaid.set_offchain_storage(key.as_slice(), Some(&[][..]));
+		check_offchain_content(&overlaid, 1, vec![(key.clone(), Some(vec![]))]);
 
-		overlayed.set_offchain_storage(key.as_slice(), None);
-		check_offchain_content(&overlayed, 1, vec![(key.clone(), None)]);
+		overlaid.set_offchain_storage(key.as_slice(), None);
+		check_offchain_content(&overlaid, 1, vec![(key.clone(), None)]);
 
-		overlayed.rollback_transaction().unwrap();
+		overlaid.rollback_transaction().unwrap();
 
-		check_offchain_content(&overlayed, 0, vec![(key.clone(), Some(vec![1, 2, 3]))]);
+		check_offchain_content(&overlaid, 0, vec![(key.clone(), Some(vec![1, 2, 3]))]);
 
-		overlayed.set_offchain_storage(key.as_slice(), None);
-		check_offchain_content(&overlayed, 0, vec![(key.clone(), None)]);
+		overlaid.set_offchain_storage(key.as_slice(), None);
+		check_offchain_content(&overlaid, 0, vec![(key.clone(), None)]);
 	}
 
 	#[test]

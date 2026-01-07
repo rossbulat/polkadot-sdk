@@ -663,7 +663,7 @@ pub struct CallApiAtParams<'a, Block: BlockT> {
 	pub function: &'static str,
 	/// The encoded arguments of the function.
 	pub arguments: Vec<u8>,
-	/// The overlayed changes that are on top of the state.
+	/// The overlaid changes that are on top of the state.
 	pub overlayed_changes: &'a RefCell<OverlayedChanges<HashingFor<Block>>>,
 	/// The call context of this call.
 	pub call_context: CallContext,

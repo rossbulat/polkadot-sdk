@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//! Overlayed changes for offchain indexing.
+//! Overlaid changes for offchain indexing.
 
 use super::changeset::OverlayedMap;
 use alloc::vec::Vec;

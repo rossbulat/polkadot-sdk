@@ -27,7 +27,7 @@ use super::*;
 
 /// Single-function utility trait with a blanket impl over [`TransactionExtension`] in order to
 /// provide transaction dispatching functionality. We avoid implementing this directly on the trait
-/// since we never want it to be overriden by the trait implementation.
+/// since we never want it to be overridden by the trait implementation.
 pub trait DispatchTransaction<Call: Dispatchable> {
 	/// The origin type of the transaction.
 	type Origin;

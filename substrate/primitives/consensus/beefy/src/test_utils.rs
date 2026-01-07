@@ -46,7 +46,7 @@ pub enum Keyring<AuthorityId> {
 
 /// Trait representing BEEFY specific generation and signing behavior of authority id
 ///
-/// Accepts custom hashing fn for the message and custom convertor fn for the signer.
+/// Accepts custom hashing fn for the message and custom converter fn for the signer.
 pub trait BeefySignerAuthority<MsgHash: Hash>: AppPair {
 	/// Generate and return signature for `message` using custom hashing `MsgHash`
 	fn sign_with_hasher(&self, message: &[u8]) -> <Self as AppCrypto>::Signature;
