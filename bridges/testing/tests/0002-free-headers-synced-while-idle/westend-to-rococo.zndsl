@@ -5,9 +5,9 @@ Creds: config
 # local chain spec gives `1u64 << 60` tokens to every endowed account: if it'll ever
 # change, it'd need to be fixed here as well
 
-# //Charlie has inital balance
+# //Charlie has initial balance
 bridge-hub-rococo-collator1: js-script {{FRAMEWORK_PATH}}/js-helpers/native-asset-balance.js with "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y" return is 1152921504606846976 within 30 seconds
-# //Dave has inital balance
+# //Dave has initial balance
 bridge-hub-rococo-collator1: js-script {{FRAMEWORK_PATH}}/js-helpers/native-asset-balance.js with "5DAAnrj7VHTznn2AWBemMuyBwZWs6FNFjdyVXUeYum3PTXFy" return is 1152921504606846976 within 30 seconds
 
 # ensure that we have synced multiple relay and parachain headers while idle. This includes both

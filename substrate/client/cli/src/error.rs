@@ -82,7 +82,7 @@ pub enum Error {
 	GlobalLoggerError(#[from] sc_tracing::logging::Error),
 
 	#[error(
-		"Starting an authorithy without network key in {0}.
+		"Starting an authority without network key in {0}.
 		\n This is not a safe operation because other authorities in the network may depend on your node having a stable identity.
 		\n Otherwise these other authorities may not being able to reach you.
 		\n If it is the first time running your node you could use one of the following methods:

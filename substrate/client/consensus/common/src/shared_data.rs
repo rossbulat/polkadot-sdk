@@ -34,7 +34,7 @@ pub struct SharedDataLockedUpgradable<T> {
 impl<T> SharedDataLockedUpgradable<T> {
 	/// Upgrade to a *real* mutex guard that will give access to the inner data.
 	///
-	/// Every call to this function will reaquire the mutex again.
+	/// Every call to this function will reacquire the mutex again.
 	pub fn upgrade(&mut self) -> MappedMutexGuard<'_, T> {
 		MutexGuard::map(self.shared_data.inner.lock(), |i| &mut i.shared_data)
 	}

@@ -210,7 +210,7 @@ impl MockClockInner {
 	// Otherwise, the wakeup will only trigger alongside another wakeup of
 	// equal or greater tick.
 	//
-	// When the pre-emptive wakeup is disabled, this can be used in combination with
+	// When the preemptive wakeup is disabled, this can be used in combination with
 	// a preceding call to `set_tick` to wait until some other wakeup at that same tick
 	//  has been triggered.
 	fn register_wakeup(&mut self, tick: Tick, pre_emptive: bool) -> oneshot::Receiver<()> {
@@ -5450,7 +5450,7 @@ fn subsystem_sends_assignment_approval_in_correct_order_on_approval_restart() {
 }
 
 // Test that if the subsystem missed the triggering of some tranches because it was not running
-// it launches the missed assignements on restart.
+// it launches the missed assignments on restart.
 #[test]
 fn subsystem_launches_missed_assignments_on_restart() {
 	let test_tranche = 20;

@@ -84,7 +84,7 @@ mod rep {
 }
 
 const LOG_TARGET: &str = "statement-gossip";
-/// Maximim time we wait for sending a notification to a peer.
+/// Maximum time we wait for sending a notification to a peer.
 const SEND_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(10);
 
 struct Metrics {

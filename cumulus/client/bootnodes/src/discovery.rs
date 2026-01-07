@@ -29,7 +29,7 @@
 //!  4. When the request over the `/paranode` protocol succeeds, we add the bootnode addresses as
 //!     known addresses to the parachain networking.
 //!  5. If the content provider discovery had completed, all `FIND_NODE` queries finished, and all
-//!     requests over the `/paranode` protocol succeded or failed, but we have not found any
+//!     requests over the `/paranode` protocol succeeded or failed, but we have not found any
 //!     bootnode addresses, we repeat the discovery process after a cooldown period.
 
 use crate::{config::MAX_ADDRESSES, schema::Response};
@@ -240,7 +240,7 @@ impl BootnodeDiscovery {
 				continue;
 			}
 
-			// libp2p may yield the same provider multiple times; skip if we alredy queried it.
+			// libp2p may yield the same provider multiple times; skip if we already queried it.
 			if self.direct_requests.contains(&peer_id) || self.find_node_queries.contains(&peer_id)
 			{
 				continue;

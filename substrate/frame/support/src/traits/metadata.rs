@@ -25,7 +25,7 @@ use Debug;
 
 /// Provides information about the pallet itself and its setup in the runtime.
 ///
-/// An implementor should be able to provide information about each pallet that
+/// An implementer should be able to provide information about each pallet that
 /// is configured in `construct_runtime!`.
 pub trait PalletInfo {
 	/// Convert the given pallet `P` into its index as configured in the runtime.

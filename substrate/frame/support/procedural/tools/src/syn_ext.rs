@@ -36,7 +36,7 @@ pub struct StopParse {
 	pub inner: TokenStream,
 }
 
-// inner macro really dependant on syn naming convention, do not export
+// inner macro really dependent on syn naming convention, do not export
 macro_rules! groups_impl {
 	($name:ident, $tok:ident, $deli:ident, $parse:ident) => {
 		#[derive(Debug)]

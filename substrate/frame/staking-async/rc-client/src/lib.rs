@@ -131,10 +131,10 @@ const LOG_TARGET: &str = "runtime::staking-async::rc-client";
 // syntactic sugar for logging.
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: $crate::LOG_TARGET,
-			concat!("[{:?}] ⬆️ ", $patter), <frame_system::Pallet<T>>::block_number() $(, $values)*
+			concat!("[{:?}] ⬆️ ", $pattern), <frame_system::Pallet<T>>::block_number() $(, $values)*
 		)
 	};
 }
@@ -379,7 +379,7 @@ impl<AccountId> SessionReport<AccountId> {
 	}
 }
 
-/// A trait to encapsulate messages between RC and AH that can be splitted into smaller chunks.
+/// A trait to encapsulate messages between RC and AH that can be split into smaller chunks.
 ///
 /// Implemented for [`SessionReport`] and [`ValidatorSetReport`].
 #[allow(clippy::len_without_is_empty)]

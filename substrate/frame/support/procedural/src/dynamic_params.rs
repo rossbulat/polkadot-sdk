@@ -199,7 +199,7 @@ impl DynamicPalletParamAttr {
 		Ok(Self { inner_mod: parse2(item)?, meta: parse2(attr)? })
 	}
 
-	pub fn statics(&self) -> Vec<syn::ItemStatic> {
+	pub fn statistics(&self) -> Vec<syn::ItemStatic> {
 		self.inner_mod.content.as_ref().map_or(Vec::new(), |(_, items)| {
 			items
 				.iter()
@@ -227,7 +227,7 @@ impl ToTokens for DynamicPalletParamAttr {
 			params_mod.ident.span(),
 		);
 		let (mod_name, vis) = (&params_mod.ident, &params_mod.vis);
-		let statics = self.statics();
+		let statistics = self.statistics();
 
 		let (mut key_names, mut key_values, mut defaults, mut attrs, mut value_types): (
 			Vec<_>,
@@ -237,7 +237,7 @@ impl ToTokens for DynamicPalletParamAttr {
 			Vec<_>,
 		) = Default::default();
 
-		for s in statics.iter() {
+		for s in statistics.iter() {
 			if let Err(err) = ensure_codec_index(&s.attrs, s.span()) {
 				tokens.extend(err.into_compile_error());
 				return

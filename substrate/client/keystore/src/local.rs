@@ -406,7 +406,7 @@ impl Keystore for LocalKeystore {
 				.expect("Can retrieve seed");
 
 			// This is done to give the keystore access to individual keys, this is necessary to avoid
-			// unnecessary host functions for paired keys and re-use host functions implemented for each
+			// unnecessary host functions for paired keys and reuse host functions implemented for each
 			// element of the pair.
 			self.generate_new::<ecdsa::Pair>(key_type, Some(&*s)).expect("seed slice is valid");
 			self.generate_new::<bls381::Pair>(key_type, Some(&*s)).expect("seed slice is valid");
@@ -867,7 +867,7 @@ mod tests {
 
 		let store = LocalKeystore::in_memory();
 		let ecdsa_bls381_key =
-			store.ecdsa_bls381_generate_new(ECDSA_BLS381, None).expect("Cant generate key");
+			store.ecdsa_bls381_generate_new(ECDSA_BLS381, None).expect("Can't generate key");
 
 		let ecdsa_keys = store.ecdsa_public_keys(ECDSA_BLS381);
 		let bls381_keys = store.bls381_public_keys(ECDSA_BLS381);
@@ -896,7 +896,7 @@ mod tests {
 		let store = LocalKeystore::in_memory();
 		let ecdsa_bls381_key = store
 			.ecdsa_bls381_generate_new(ECDSA_BLS381, Some("//Alice"))
-			.expect("Cant generate key");
+			.expect("Can't generate key");
 
 		let ecdsa_keys = store.ecdsa_public_keys(ECDSA_BLS381);
 		let bls381_keys = store.bls381_public_keys(ECDSA_BLS381);

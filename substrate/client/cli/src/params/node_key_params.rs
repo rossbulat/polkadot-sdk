@@ -88,7 +88,7 @@ pub struct NodeKeyParams {
 	/// not being able to reach you if your identity changes after entering the active set.
 	///
 	/// For minimal node downtime if no custom `node-key-file` argument is provided
-	/// the network-key is usually persisted accross nodes restarts,
+	/// the network-key is usually persisted across nodes restarts,
 	/// in the `network` folder from directory provided in `--base-path`
 	///
 	/// Warning!! If you ever run the node with this argument, make sure

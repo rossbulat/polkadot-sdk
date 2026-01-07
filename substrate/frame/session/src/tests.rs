@@ -734,7 +734,7 @@ mod disabling_with_reenabling {
 					&initially_disabled,
 				);
 
-			// Disable Offender and do not re-enable anyone
+			// Disable Offender and do not reenable anyone
 			assert_eq!(disabling_decision.disable, Some(OFFENDER_VALIDATOR_IDX));
 			assert_eq!(disabling_decision.reenable, None);
 		});

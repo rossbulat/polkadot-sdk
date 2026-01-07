@@ -67,7 +67,7 @@ pub mod bls377 {
 	pub type Public = super::Public<BlsEngine>;
 	/// BLS12-377 signature.
 	pub type Signature = super::Signature<BlsEngine>;
-	/// BLS12-377 Proof Of Possesion.
+	/// BLS12-377 Proof Of Possession.
 	pub type ProofOfPossession = super::ProofOfPossession<BlsEngine>;
 
 	impl super::HardJunctionId for BlsEngine {
@@ -96,7 +96,7 @@ pub mod bls381 {
 	/// BLS12-381 signature.
 	pub type Signature = super::Signature<BlsEngine>;
 
-	/// BLS12-381 Proof Of Possesion.
+	/// BLS12-381 Proof Of Possession.
 	pub type ProofOfPossession = super::ProofOfPossession<BlsEngine>;
 
 	impl super::HardJunctionId for BlsEngine {

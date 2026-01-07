@@ -251,7 +251,7 @@ fn transact_using_authorized_alias_from_para_to_asset_hub_and_back_to_para() {
 		20_000_000_000
 	);
 
-	// We add auhtorized alias on AH so sender from Penpal can AliasOrigin into itself on AH
+	// We add authorized alias on AH so sender from Penpal can AliasOrigin into itself on AH
 	// (instead of aliasing into Sovereign Account of sender)
 	AssetHubWestend::execute_with(|| {
 		assert_ok!(<AssetHubWestend as AssetHubWestendPallet>::PolkadotXcm::add_authorized_alias(

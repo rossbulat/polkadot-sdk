@@ -84,7 +84,7 @@ type Seed = [u8; SEED_SERIALIZED_SIZE];
 pub struct Pair {
 	secret: Secret,
 	seed: Seed,
-	// This is only read back in the sign operaton
+	// This is only read back in the sign operation
 	#[allow(dead_code)]
 	prefix: Seed,
 }

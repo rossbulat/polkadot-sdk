@@ -63,7 +63,7 @@ pub const KEY_TYPE: sp_core::crypto::KeyTypeId = sp_application_crypto::key_type
 
 /// Trait representing BEEFY authority id, including custom signature verification.
 ///
-/// Accepts custom hashing fn for the message and custom convertor fn for the signer.
+/// Accepts custom hashing fn for the message and custom converter fn for the signer.
 pub trait BeefyAuthorityId<MsgHash: Hash>: RuntimeAppPublic {
 	/// Verify a signature.
 	///
@@ -473,7 +473,7 @@ pub trait AncestryHelperWeightInfo<Header: HeaderT>: AncestryHelper<Header> {
 /// boundary. The inner value is an encoded representation of the actual key
 /// ownership proof which will be parameterized when defining the runtime. At
 /// the runtime API boundary this type is unknown and as such we keep this
-/// opaque representation, implementors of the runtime API will have to make
+/// opaque representation, implementers of the runtime API will have to make
 /// sure that all usages of `OpaqueKeyOwnershipProof` refer to the same type.
 pub type OpaqueKeyOwnershipProof = OpaqueValue;
 

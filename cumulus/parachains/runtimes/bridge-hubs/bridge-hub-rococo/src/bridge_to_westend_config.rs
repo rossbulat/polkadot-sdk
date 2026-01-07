@@ -128,7 +128,7 @@ impl pallet_bridge_messages::Config<WithBridgeHubWestendMessagesInstance> for Ru
 	type OnMessagesDelivered = XcmOverBridgeHubWestend;
 }
 
-/// Add support for the export and dispatch of XCM programs withing
+/// Add support for the export and dispatch of XCM programs within
 /// `WithBridgeHubWestendMessagesInstance`.
 pub type XcmOverBridgeHubWestendInstance = pallet_xcm_bridge_hub::Instance1;
 impl pallet_xcm_bridge_hub::Config<XcmOverBridgeHubWestendInstance> for Runtime {

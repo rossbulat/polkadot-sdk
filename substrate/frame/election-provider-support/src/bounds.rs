@@ -21,7 +21,7 @@
 //!
 //! This module defines and implements types that help creating and handling election bounds.
 //! [`DataProviderBounds`] encapsulates the upper limits for the results provided by `DataProvider`
-//! implementors. Those limits can be defined over two axis: number of elements returned (`count`)
+//! implementers. Those limits can be defined over two axis: number of elements returned (`count`)
 //! and/or the size of the returned SCALE encoded structure (`size`).
 //!
 //! [`ElectionBoundsBuilder`] is a helper to construct data election bounds and it aims at
@@ -126,7 +126,7 @@ impl Add for SizeBound {
 
 /// Data bounds for election data.
 ///
-/// Limits the data returned by `DataProvider` implementors, defined over two axis: `count`,
+/// Limits the data returned by `DataProvider` implementers, defined over two axis: `count`,
 /// defining the maximum number of elements returned, and `size`, defining the limit in size
 /// (bytes) of the SCALE encoded result.
 ///

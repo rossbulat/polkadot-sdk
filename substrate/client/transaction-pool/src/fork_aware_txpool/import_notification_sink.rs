@@ -246,7 +246,7 @@ where
 		});
 	}
 
-	/// Lenght of the `already_notified_items` set.
+	/// Length of the `already_notified_items` set.
 	///
 	/// Exposed for testing only.
 	pub fn notified_items_len(&self) -> usize {

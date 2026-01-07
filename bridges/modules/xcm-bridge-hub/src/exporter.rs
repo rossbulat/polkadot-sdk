@@ -293,7 +293,7 @@ impl<T: Config<I>, I: 'static> Pallet<T, I> {
 			_ => {
 				// if there is no bridge or it has been closed, then we don't need to send resume
 				// signal to the local origin - it has closed bridge itself, so it should have
-				// alrady pruned everything else
+				// already pruned everything else
 				return
 			},
 		};

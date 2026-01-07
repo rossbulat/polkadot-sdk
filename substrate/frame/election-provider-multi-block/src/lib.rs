@@ -2365,7 +2365,7 @@ mod phase_rotation {
 		ExtBuilder::full().build_and_execute(|| {
 			roll_to(10);
 			assert!(MultiBlock::current_phase().is_off());
-			// note: 2 becuase 1 read registered by the parent pallet, 1 by verifier.
+			// note: 2 because 1 read registered by the parent pallet, 1 by verifier.
 			assert_eq!(System::remaining_block_weight().consumed(), Weight::from_parts(2, 0));
 
 			// roll to this phase, no weight meter is consumed yet other than 1 read + 1 write.
@@ -3270,7 +3270,7 @@ mod manage_ops {
 	// 2. rotate mid signed, validation, unsigned, done, but NOT export => clear all data, move to
 	//    next round and be off. Note: all of the data in this pallet is indexed by the round index,
 	//    so moving to the next round will implicitly make the old data unavaioable, even if not
-	//    cleared out. This secnario needs further testing.
+	//    cleared out. This scenario needs further testing.
 	// 3. rotate mid export: same as above, except staking will be out of sync and will also need
 	//    governance intervention.
 	//

@@ -131,7 +131,7 @@ pub(super) struct ViewPoolObserver<ChainApi: graph::ChainApi> {
 	/// The sink used to notify dropped by enforcing limits or by being usurped, or invalid
 	/// transactions.
 	///
-	/// Note: Ready and future statuses are alse communicated through this channel, enabling the
+	/// Note: Ready and future statuses are also communicated through this channel, enabling the
 	/// stream consumer to track views that reference the transaction.
 	dropped_stream_sink: TracingUnboundedSender<
 		TransactionStatusEvent<ExtrinsicHash<ChainApi>, BlockHash<ChainApi>>,

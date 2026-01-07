@@ -54,7 +54,7 @@ production. The `enter` call on the other hand is part of block import and consu
 by `create_inherent`.
 
 In practice both calls process inherent data and apply it to the state. Block production and block import should arrive
-at the same new state. Hence we re-use the same logic to ensure this is the case.
+at the same new state. Hence we reuse the same logic to ensure this is the case.
 
 The only real difference between the two is, that on `create_inherent` we actually need the processed and filtered
 inherent data to build the block, while on `enter` the processed data should for one be identical to the incoming

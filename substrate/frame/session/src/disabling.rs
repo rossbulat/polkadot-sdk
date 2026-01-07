@@ -31,7 +31,7 @@ pub trait DisablingStrategy<T: Config> {
 /// `decision`
 ///
 /// `disable` is the index of the validator to disable,
-/// `reenable` is the index of the validator to re-enable.
+/// `reenable` is the index of the validator to reenable.
 #[derive(Debug)]
 pub struct DisablingDecision {
 	pub disable: Option<u32>,
@@ -114,7 +114,7 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 
 /// Implementation of [`DisablingStrategy`] which disables validators from the active set up to a
 /// limit (factor_based_disable_limit) and if the limit is reached and the new offender is higher
-/// (bigger punishment/severity) then it re-enables the lowest offender to free up space for the new
+/// (bigger punishment/severity) then it reenables the lowest offender to free up space for the new
 /// offender.
 ///
 /// This strategy is not based on cumulative severity of offences but only on the severity of the
@@ -165,7 +165,7 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 			}
 		}
 
-		// We don't disable more than the limit (but we can re-enable a smaller offender to make
+		// We don't disable more than the limit (but we can reenable a smaller offender to make
 		// space)
 		if currently_disabled.len() >= Self::disable_limit(active_set.len()) {
 			log!(
@@ -174,24 +174,24 @@ impl<T: Config, const DISABLING_LIMIT_FACTOR: usize> DisablingStrategy<T>
 				Self::disable_limit(active_set.len())
 			);
 
-			// Find the smallest offender to re-enable that is not higher than
+			// Find the smallest offender to reenable that is not higher than
 			// offender_slash_severity
 			if let Some((smallest_idx, _)) = currently_disabled
 				.iter()
 				.filter(|(_, severity)| *severity <= offender_slash_severity)
 				.min_by_key(|(_, severity)| *severity)
 			{
-				log!(debug, "Will disable {:?} and re-enable {:?}", offender_idx, smallest_idx);
+				log!(debug, "Will disable {:?} and reenable {:?}", offender_idx, smallest_idx);
 				return DisablingDecision {
 					disable: Some(offender_idx),
 					reenable: Some(*smallest_idx),
 				}
 			} else {
-				log!(debug, "No smaller offender found to re-enable");
+				log!(debug, "No smaller offender found to reenable");
 				return DisablingDecision { disable: None, reenable: None }
 			}
 		} else {
-			// If we are not at the limit, just disable the new offender and dont re-enable anyone
+			// If we are not at the limit, just disable the new offender and dont reenable anyone
 			log!(debug, "Will disable {:?}", offender_idx);
 			return DisablingDecision { disable: Some(offender_idx), reenable: None }
 		}

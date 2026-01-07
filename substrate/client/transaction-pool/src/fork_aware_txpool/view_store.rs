@@ -522,7 +522,7 @@ where
 	/// Inserts new view into the view store.
 	///
 	/// Refer to [`Self::insert_new_view_sync`] more details.
-	/// If there are any pending tx replacments, they are applied to the new view.
+	/// If there are any pending tx replacements, they are applied to the new view.
 	#[instrument(level = Level::TRACE, skip_all, target = "txpool", name = "view_store::insert_new_view")]
 	pub(super) async fn insert_new_view(
 		&self,

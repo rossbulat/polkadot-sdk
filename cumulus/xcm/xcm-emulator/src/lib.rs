@@ -710,7 +710,7 @@ macro_rules! decl_test_parachains {
 							.clone()
 						);
 
-						// Initialze `System`.
+						// Initialize `System`.
 						let digest = <Self as Parachain>::DigestProvider::convert((block_number, relay_block_number));
 						let slot_duration = $crate::pallet_aura::Pallet::<$runtime::Runtime>::slot_duration();
 						<Self as Chain>::System::initialize(&block_number, &parent_head_data.hash(), &digest);
@@ -1602,7 +1602,7 @@ impl TestArgs {
 	}
 }
 
-/// Auxiliar struct to help creating a new `Test` instance
+/// Auxiliary struct to help creating a new `Test` instance
 pub struct TestContext<T, Origin: Chain, Destination: Chain> {
 	pub sender: AccountIdOf<Origin::Runtime>,
 	pub receiver: AccountIdOf<Destination::Runtime>,

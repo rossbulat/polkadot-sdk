@@ -44,7 +44,7 @@ pub mod fatp_common;
 // - view count (e.g. same new block notified twice)
 // - invalid with many views (different cases)
 //
-// review (from old pool) and maybe re-use:
+// review (from old pool) and maybe reuse:
 // fn import_notification_to_pool_maintain_works()
 // fn prune_tags_should_work()
 // fn should_ban_invalid_transactions()

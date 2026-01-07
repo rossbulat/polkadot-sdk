@@ -144,7 +144,7 @@ where
 		.map_err(|e| anyhow::format_err!("{}", e))
 	}
 
-	/// Relay a consequitive range of messages.
+	/// Relay a consecutive range of messages.
 	async fn relay_messages_range(data: RelayMessagesRangeParams) -> anyhow::Result<()> {
 		let source_client = data.source.into_client::<Self::Source>().await?;
 		let target_client = data.target.into_client::<Self::Target>().await?;

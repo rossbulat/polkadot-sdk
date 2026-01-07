@@ -278,7 +278,7 @@ async fn too_many_inbound_requests() {
 				)
 			);
 		},
-		event => panic!("inavlid event: {event:?}"),
+		event => panic!("invalid event: {event:?}"),
 	}
 
 	// verify that no other events are read from the handle

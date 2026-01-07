@@ -153,7 +153,7 @@ pub mod pallet {
 		UnknownAssetKind,
 		/// The given asset ID already has an assigned conversion rate and cannot be re-created.
 		AlreadyExists,
-		/// Overflow ocurred when calculating the inverse rate.
+		/// Overflow occurred when calculating the inverse rate.
 		Overflow,
 	}
 

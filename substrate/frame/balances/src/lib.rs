@@ -1021,7 +1021,7 @@ pub mod pallet {
 		/// NOTE: LOW-LEVEL: This will not attempt to maintain total issuance. It is expected that
 		/// the caller will do this.
 		///
-		/// NOTE: LOW-LEVEL: `force_consumer_bump` is mainly there to accomodate for locks, which
+		/// NOTE: LOW-LEVEL: `force_consumer_bump` is mainly there to accommodate for locks, which
 		/// have no ability in their API to return an error, and therefore better force increment
 		/// the consumer, or else the system will be inconsistent. See `consumer_limits_tests`.
 		pub(crate) fn mutate_account<R>(

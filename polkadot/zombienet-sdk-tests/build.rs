@@ -111,7 +111,7 @@ fn fetch_metadata_file(chain: &str, output_path: &Path) {
 		let metadata_file = PathBuf::from(&path_to_use);
 		fs::copy(metadata_file, output_path).unwrap();
 	} else if let Some(exisiting_wasm) = find_wasm(chain) {
-		debug_output!("exisiting wasm: {:?}", exisiting_wasm);
+		debug_output!("existing wasm: {:?}", exisiting_wasm);
 		// generate metadata
 		generate_metadata_file(&exisiting_wasm, output_path);
 	} else {

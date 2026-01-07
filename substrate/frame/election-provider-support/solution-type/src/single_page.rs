@@ -263,7 +263,7 @@ fn sort_impl(count: usize) -> TokenStream2 {
 			let field = vote_field(c);
 			quote! {
 				// NOTE: self.filed here is sometimes `Vec<(voter, weight)>` and sometimes
-				// `Vec<(voter, weights, last_weight)>`, but Rust's great patter matching makes it
+				// `Vec<(voter, weights, last_weight)>`, but Rust's great pattern matching makes it
 				// all work super nice.
 				self.#field.sort_by(|(a, ..), (b, ..)| voter_stake(&b).cmp(&voter_stake(&a)));
 				// ---------------------------------^^ in all fields, the index 0 is the voter id.
@@ -273,7 +273,7 @@ fn sort_impl(count: usize) -> TokenStream2 {
 }
 
 fn remove_weakest_sorted_impl(count: usize) -> TokenStream2 {
-	// check minium from field 2 onwards. We assume 0 is minimum
+	// check minimum from field 2 onwards. We assume 0 is minimum
 	let check_minimum = (2..=count).map(|c| {
 		let filed = vote_field(c);
 		quote! {

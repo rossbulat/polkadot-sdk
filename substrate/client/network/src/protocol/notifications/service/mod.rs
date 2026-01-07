@@ -645,7 +645,7 @@ pub fn notification_service(
 }
 
 // Decorates the mpsc-notification-to-protocol metric with the name of the protocol,
-// to be able to distiguish between different protocols in dashboards.
+// to be able to distinguish between different protocols in dashboards.
 fn metric_label_for_protocol(protocol: &ProtocolName) -> String {
 	let protocol_name = protocol.to_string();
 	let keys = protocol_name.split("/").collect::<Vec<_>>();

@@ -389,7 +389,7 @@ fn relay_dispatch_queue_size_is_updated() {
 			);
 		}
 
-		// The messages of Q0…Q98 are overweight, so `service_queues` wont help.
+		// The messages of Q0…Q98 are overweight, so `service_queues` won't help.
 		for p in 0..98 {
 			let para = UmpQueueId::Para(p.into());
 			MessageQueue::service_queues(Weight::from_all(u64::MAX));

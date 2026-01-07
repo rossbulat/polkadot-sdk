@@ -68,7 +68,7 @@ pub struct TestState {
 	pub chunk_indices: Vec<Vec<ChunkIndex>>,
 	// Per relay chain block - candidate backed by our backing group
 	pub backed_candidates: Vec<CandidateReceipt>,
-	// Request protcol names
+	// Request protocol names
 	pub req_protocol_names: ReqProtocolNames,
 	// Relay chain block infos
 	pub block_infos: Vec<BlockInfo>,

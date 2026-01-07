@@ -193,7 +193,7 @@ fn restart_doesnt_affect_peers_downloading_finality_data() {
 	let network_provider = NetworkServiceProvider::new();
 	let network_handle = network_provider.handle();
 
-	// we wil send block requests to these peers
+	// we will send block requests to these peers
 	// for these blocks we don't know about
 	let actions = sync.actions(&network_handle).unwrap();
 	assert_eq!(actions.len(), 2);
@@ -926,7 +926,7 @@ fn sync_restart_removes_block_but_not_justification_requests() {
 	// we don't actually perform any requests, just keep track of peers waiting for a response
 	let mut pending_responses = HashSet::new();
 
-	// we wil send block requests to these peers
+	// we will send block requests to these peers
 	// for these blocks we don't know about
 	for (peer, _request) in sync.block_requests() {
 		// "send" request

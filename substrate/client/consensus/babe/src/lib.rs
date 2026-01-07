@@ -1590,11 +1590,11 @@ where
 				if viable_epoch.as_ref().end_slot() <= slot {
 					// Some epochs must have been skipped as our current slot fits outside the
 					// current epoch. We will figure out which epoch it belongs to and we will
-					// re-use the same data for that epoch.
+					// reuse the same data for that epoch.
 					// Notice that we are only updating a local copy of the `Epoch`, this
 					// makes it so that when we insert the next epoch into `EpochChanges` below
 					// (after incrementing it), it will use the correct epoch index and start slot.
-					// We do not update the original epoch that will be re-used because there might
+					// We do not update the original epoch that will be reused because there might
 					// be other forks (that we haven't imported) where the epoch isn't skipped, and
 					// to import those forks we want to keep the original epoch data. Not updating
 					// the original epoch works because when we search the tree for which epoch to

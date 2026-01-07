@@ -17,7 +17,7 @@
 
 //! This contract calls the Storage pre-compile _without a delegate call_.
 //! This must result in a trap, it must not be possible to call this contract
-//! succesfully!
+//! successfully!
 
 #![no_std]
 #![no_main]

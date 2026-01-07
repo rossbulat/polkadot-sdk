@@ -42,7 +42,7 @@ use std::{
 };
 
 // outbound substream was initiated for a peer but an inbound substream from that same peer
-// was receied while the `Peerset` was waiting for the outbound substream to be opened
+// was received while the `Peerset` was waiting for the outbound substream to be opened
 //
 // verify that the peer state is updated correctly
 #[tokio::test]
@@ -1006,7 +1006,7 @@ async fn set_reserved_peers_move_previously_reserved() {
 
 		// Previously reserved, but remained connected.
 		if moved_peers.contains(peer) {
-			// This was previously `Reseved::Yes` but moved to regular nodes.
+			// This was previously `Reserved::Yes` but moved to regular nodes.
 			assert_eq!(
 				state,
 				&PeerState::Connected { direction: Direction::Outbound(Reserved::No) }

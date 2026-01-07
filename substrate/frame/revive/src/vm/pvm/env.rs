@@ -636,7 +636,7 @@ pub mod env {
 		out_ptr: u32,
 		out_len_ptr: u32,
 	) -> Result<(), TrapReason> {
-		// quering the length is free as it is stored with the contract metadata
+		// querying the length is free as it is stored with the contract metadata
 		let len = self.ext.immutable_data_len();
 		self.charge_gas(RuntimeCosts::GetImmutableData(len))?;
 		let data = self.ext.get_immutable_data()?;

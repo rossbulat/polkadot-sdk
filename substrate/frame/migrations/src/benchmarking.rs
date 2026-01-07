@@ -235,7 +235,7 @@ mod benches {
 		// keys removed.
 		match result {
 			KillStorageResult::AllRemoved(_i) => {
-				// during the test the storage is not comitted and `i` will always be 0
+				// during the test the storage is not committed and `i` will always be 0
 				#[cfg(not(test))]
 				ensure!(_i == n, "Not all keys are removed");
 			},

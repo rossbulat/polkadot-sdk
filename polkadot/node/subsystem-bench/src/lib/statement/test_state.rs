@@ -74,7 +74,7 @@ pub struct TestState {
 	pub block_infos: Vec<BlockInfo>,
 	// Map from generated candidate receipts
 	pub candidate_receipts: HashMap<H256, Vec<CandidateReceipt>>,
-	// Map from generated commited candidate receipts
+	// Map from generated committed candidate receipts
 	pub commited_candidate_receipts: HashMap<H256, Vec<CommittedCandidateReceipt>>,
 	// PersistedValidationData, we use one for all candidates
 	pub pvd: PersistedValidationData,

@@ -711,7 +711,7 @@ mod test {
 	}
 
 	/// The raw bytes seen in this test is of a deployment transaction from [eip-2470] which publish
-	/// a contract at a predicable address on any chain that it's run on. We use these bytes to test
+	/// a contract at a predictable address on any chain that it's run on. We use these bytes to test
 	/// that if we were to run this transaction on pallet-revive that it would run and also produce
 	/// a contract at the address described in the EIP.
 	///

@@ -227,10 +227,10 @@ pub(crate) const LOG_TARGET: &str = "runtime::staking-async";
 // syntactic sugar for logging.
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: crate::LOG_TARGET,
-			concat!("[{:?}] 💸 ", $patter), <frame_system::Pallet<T>>::block_number() $(, $values)*
+			concat!("[{:?}] 💸 ", $pattern), <frame_system::Pallet<T>>::block_number() $(, $values)*
 		)
 	};
 }

@@ -336,7 +336,7 @@ enum CandidateState {
 }
 
 #[derive(Debug, Clone, PartialEq, Error)]
-/// Possible errors when construcing a candidate entry.
+/// Possible errors when constructing a candidate entry.
 pub enum CandidateEntryError {
 	#[error("Candidate does not match the persisted validation data provided alongside it")]
 	PersistedValidationDataMismatch,

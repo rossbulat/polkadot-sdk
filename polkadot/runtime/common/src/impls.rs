@@ -86,7 +86,7 @@ pub struct EraPayoutParams {
 	pub falloff: Perquintill,
 	/// Fraction of the era period used to calculate era payouts.
 	pub period_fraction: Perquintill,
-	/// Legacy auction proportion, which substracts from `ideal_stake` if not `None`.
+	/// Legacy auction proportion, which subtracts from `ideal_stake` if not `None`.
 	pub legacy_auction_proportion: Option<Perquintill>,
 }
 

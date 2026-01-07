@@ -30,7 +30,7 @@ pub trait RewardsPool<AccountId> {
 	/// Create a new reward pool.
 	///
 	/// Parameters:
-	/// - `creator`: The account to pay for on-chain stroage deposit;
+	/// - `creator`: The account to pay for on-chain storage deposit;
 	/// - `staked_asset_id`: the asset to be staked in the pool;
 	/// - `reward_asset_id`: the asset to be distributed as rewards;
 	/// - `reward_rate_per_block`: the amount of reward tokens distributed per block;

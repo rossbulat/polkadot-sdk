@@ -79,12 +79,12 @@ const SLOT_ALLOCATION_FREQUENCY: Duration = Duration::from_secs(1);
 
 /// Reputation adjustment when a peer gets disconnected.
 ///
-/// Lessens the likelyhood of the peer getting selected for an outbound connection soon.
+/// Lessens the likelihood of the peer getting selected for an outbound connection soon.
 const DISCONNECT_ADJUSTMENT: Reputation = Reputation::new(-256, "Peer disconnected");
 
 /// Reputation adjustment when a substream fails to open.
 ///
-/// Lessens the likelyhood of the peer getting selected for an outbound connection soon.
+/// Lessens the likelihood of the peer getting selected for an outbound connection soon.
 const OPEN_FAILURE_ADJUSTMENT: Reputation = Reputation::new(-1024, "Open failure");
 
 /// Is the peer reserved?
@@ -487,7 +487,7 @@ impl Peerset {
 			},
 			// litep2p doesn't support the ability to cancel an opening substream so if the
 			// substream was closed while it was opening, it was marked as canceled and if the
-			// substream opens succesfully, it will be closed
+			// substream opens successfully, it will be closed
 			PeerState::Canceled { direction: substream_direction } => {
 				log::trace!(
 					target: LOG_TARGET,
@@ -667,7 +667,7 @@ impl Peerset {
 			//
 			// litep2p doesn't care what `Peerset` considers the substream direction to be and since
 			// it's used for bookkeeping for substream counts, keeping the substream direction
-			// unmodified simplies the implementation a lot. The direction would otherwise be
+			// unmodified simplifies the implementation a lot. The direction would otherwise be
 			// irrelevant for protocols but because `SyncingEngine` has a hack to reject excess
 			// inbound substreams, that system has to be kept working for the time being. Once that
 			// issue is fixed, this approach can be re-evaluated if need be.
@@ -1110,7 +1110,7 @@ impl Stream for Peerset {
 					// peers anymore
 					//
 					// calculate how many of the previously connected peers were counted as regular
-					// peers and substract these counts from `num_out`/`num_in`
+					// peers and subtract these counts from `num_out`/`num_in`
 					//
 					// If a reserved peer is not already tracked, it is added as disconnected by
 					// `calculate_slot_adjustment`. This ensures at the next slot allocation (1sec)
@@ -1214,7 +1214,7 @@ impl Stream for Peerset {
 					// peers anymore
 					//
 					// calculate how many of the previously connected peers were counted as regular
-					// peers and substract these counts from `num_out`/`num_in`
+					// peers and subtract these counts from `num_out`/`num_in`
 					let (in_peers, out_peers) = self.calculate_slot_adjustment(peers.iter());
 					self.num_out -= out_peers;
 					self.num_in -= in_peers;

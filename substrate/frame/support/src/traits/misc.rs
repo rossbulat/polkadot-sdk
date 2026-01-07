@@ -904,7 +904,7 @@ impl<Origin: PartialEq> PrivilegeCmp<Origin> for EqualPrivilegeOnly {
 /// of those long-running computations back on chain.
 ///
 /// NOTE: This function runs off-chain, so it can access the block state,
-/// but cannot preform any alterations. More specifically alterations are
+/// but cannot perform any alterations. More specifically alterations are
 /// not forbidden, but they are not persisted in any way after the worker
 /// has finished.
 #[cfg_attr(all(not(feature = "tuples-96"), not(feature = "tuples-128")), impl_for_tuples(64))]

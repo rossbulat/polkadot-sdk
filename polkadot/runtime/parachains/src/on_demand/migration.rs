@@ -63,7 +63,7 @@ mod v1 {
 				let v0_queue = v0::OnDemandQueue::<T>::take();
 				// Process the v0 queue into v1.
 				v0_queue.into_iter().for_each(|enqueued_order| {
-					// Readding the old orders will use the new systems.
+					// Re-adding the old orders will use the new systems.
 					Pallet::<T>::add_on_demand_order(
 						queue_status,
 						enqueued_order.para_id,

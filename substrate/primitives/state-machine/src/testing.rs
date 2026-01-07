@@ -109,7 +109,7 @@ where
 		}
 	}
 
-	/// Returns the overlayed changes.
+	/// Returns the overlaid changes.
 	pub fn overlayed_changes(&self) -> &OverlayedChanges<H> {
 		&self.overlay
 	}

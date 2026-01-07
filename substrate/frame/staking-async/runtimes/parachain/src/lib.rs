@@ -1026,7 +1026,7 @@ impl pallet_nft_fractionalization::Config for Runtime {
 parameter_types! {
 	pub NftsPalletFeatures: PalletFeatures = PalletFeatures::all_enabled();
 	pub const NftsMaxDeadlineDuration: BlockNumber = 12 * 30 * DAYS;
-	// re-use the Uniques deposits
+	// reuse the Uniques deposits
 	pub const NftsCollectionDeposit: Balance = UniquesCollectionDeposit::get();
 	pub const NftsItemDeposit: Balance = UniquesItemDeposit::get();
 	pub const NftsMetadataDepositBase: Balance = UniquesMetadataDepositBase::get();
@@ -2037,7 +2037,7 @@ impl_runtime_apis! {
 				fn worst_case_holding(depositable_count: u32) -> XcmAssets {
 					// A mix of fungible, non-fungible, and concrete assets.
 					let holding_non_fungibles = MaxAssetsIntoHolding::get() / 2 - depositable_count;
-					let holding_fungibles = holding_non_fungibles - 2; // -2 for two `iter::once` bellow
+					let holding_fungibles = holding_non_fungibles - 2; // -2 for two `iter::once` below
 					let fungibles_amount: u128 = 100;
 					(0..holding_fungibles)
 						.map(|i| {

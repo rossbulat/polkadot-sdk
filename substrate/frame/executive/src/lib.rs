@@ -134,7 +134,7 @@ use frame_system::pallet_prelude::BlockNumberFor;
 use sp_runtime::{
 	generic::Digest,
 	traits::{
-		self, Applyable, CheckEqual, Checkable, Dispatchable, Header, LazyBlock, NumberFor, One,
+		self, Applicable, CheckEqual, Checkable, Dispatchable, Header, LazyBlock, NumberFor, One,
 		ValidateUnsigned, Zero,
 	},
 	transaction_validity::{TransactionSource, TransactionValidity, TransactionValidityError},
@@ -156,7 +156,7 @@ use ::{
 const LOG_TARGET: &str = "runtime::executive";
 
 pub type CheckedOf<E, C> = <E as Checkable<C>>::Checked;
-pub type CallOf<E, C> = <CheckedOf<E, C> as Applyable>::Call;
+pub type CallOf<E, C> = <CheckedOf<E, C> as Applicable>::Call;
 pub type OriginOf<E, C> = <CallOf<E, C> as Dispatchable>::RuntimeOrigin;
 
 /// Configuration for try-runtime upgrade checks.
@@ -265,7 +265,7 @@ impl<
 	for Executive<System, Block, Context, UnsignedValidator, AllPalletsWithSystem, COnRuntimeUpgrade>
 where
 	Block::Extrinsic: Checkable<Context> + Codec,
-	CheckedOf<Block::Extrinsic, Context>: Applyable + GetDispatchInfo,
+	CheckedOf<Block::Extrinsic, Context>: Applicable + GetDispatchInfo,
 	CallOf<Block::Extrinsic, Context>:
 		Dispatchable<Info = DispatchInfo, PostInfo = PostDispatchInfo>,
 	OriginOf<Block::Extrinsic, Context>: From<Option<System::AccountId>>,
@@ -313,7 +313,7 @@ impl<
 	> Executive<System, Block, Context, UnsignedValidator, AllPalletsWithSystem, COnRuntimeUpgrade>
 where
 	Block::Extrinsic: Checkable<Context> + Codec,
-	CheckedOf<Block::Extrinsic, Context>: Applyable + GetDispatchInfo,
+	CheckedOf<Block::Extrinsic, Context>: Applicable + GetDispatchInfo,
 	CallOf<Block::Extrinsic, Context>:
 		Dispatchable<Info = DispatchInfo, PostInfo = PostDispatchInfo>,
 	OriginOf<Block::Extrinsic, Context>: From<Option<System::AccountId>>,
@@ -572,7 +572,7 @@ impl<
 	> Executive<System, Block, Context, UnsignedValidator, AllPalletsWithSystem, COnRuntimeUpgrade>
 where
 	Block::Extrinsic: Checkable<Context> + Codec,
-	CheckedOf<Block::Extrinsic, Context>: Applyable + GetDispatchInfo,
+	CheckedOf<Block::Extrinsic, Context>: Applicable + GetDispatchInfo,
 	CallOf<Block::Extrinsic, Context>:
 		Dispatchable<Info = DispatchInfo, PostInfo = PostDispatchInfo>,
 	OriginOf<Block::Extrinsic, Context>: From<Option<System::AccountId>>,
@@ -890,7 +890,7 @@ where
 
 		// AUDIT: Under no circumstances may this function panic from here onwards.
 
-		let r = Applyable::apply::<UnsignedValidator>(xt, &dispatch_info, encoded_len)?;
+		let r = Applicable::apply::<UnsignedValidator>(xt, &dispatch_info, encoded_len)?;
 
 		// Mandatory(inherents) are not allowed to fail.
 		//

@@ -1394,7 +1394,7 @@ where
 
 	/// Builds and updates a new view.
 	///
-	/// This functio uses [`Self::build_new_view`] to create or clone new view.
+	/// This function uses [`Self::build_new_view`] to create or clone new view.
 	///
 	/// The new view will be updated with transactions from the tree_route and the mempool, all
 	/// required events will be triggered, it will be inserted to the view store (respecting all
@@ -1794,7 +1794,7 @@ where
 		}
 	}
 
-	/// Executes the maintainance for the finalized event.
+	/// Executes the maintenance for the finalized event.
 	///
 	/// Performs a house-keeping required for finalized event. This includes:
 	/// - executing the on finalized procedure for the view store,
@@ -1968,7 +1968,7 @@ where
 	ChainApi: 'static + graph::ChainApi<Block = Block>,
 	<Block as BlockT>::Hash: Unpin,
 {
-	/// Executes the maintainance for the given chain event.
+	/// Executes the maintenance for the given chain event.
 	async fn maintain(&self, event: ChainEvent<Self::Block>) {
 		let start = Instant::now();
 		debug!(

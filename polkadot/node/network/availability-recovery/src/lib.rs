@@ -157,12 +157,12 @@ enum ErasureTask {
 		BTreeMap<ChunkIndex, Vec<u8>>,
 		oneshot::Sender<std::result::Result<AvailableData, ErasureEncodingError>>,
 	),
-	/// Re-encode `AvailableData` into erasure chunks in order to verify the provided root hash of
+	/// Reencode `AvailableData` into erasure chunks in order to verify the provided root hash of
 	/// the Merkle tree.
 	Reencode(usize, Hash, AvailableData, oneshot::Sender<Option<AvailableData>>),
 }
 
-/// Re-encode the data into erasure chunks in order to verify
+/// Reencode the data into erasure chunks in order to verify
 /// the root hash of the provided Merkle tree, which is built
 /// on-top of the encoded chunks.
 ///

@@ -471,7 +471,7 @@ pub const ON_DEMAND_DEFAULT_QUEUE_MAX_SIZE: u32 = 10_000;
 ///
 /// Setting `on_demand_queue_max_size` to a value higher than this is unsound. This is more a
 /// theoretical limit, just below enough what the target type supports, so comparisons are possible
-/// even with indices that are overflowing the underyling type.
+/// even with indices that are overflowing the underlying type.
 pub const ON_DEMAND_MAX_QUEUE_MAX_SIZE: u32 = 1_000_000_000;
 
 /// Backing votes threshold used from the host prior to runtime API version 6 and from the runtime
@@ -2747,7 +2747,7 @@ pub fn transpose_claim_queue(
 }
 
 // Approval Slashes primitives
-/// Supercedes the old 'SlashingOffenceKind' enum.
+/// Supersedes the old 'SlashingOffenceKind' enum.
 #[derive(PartialEq, Eq, Clone, Copy, Encode, Decode, DecodeWithMemTracking, TypeInfo, Debug)]
 pub enum DisputeOffenceKind {
 	/// A severe offence when a validator backed an invalid block

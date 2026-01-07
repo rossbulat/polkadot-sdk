@@ -136,7 +136,7 @@ pub trait RuntimePublic: Sized {
 	/// The `owner` is an arbitrary byte array representing the identity of the owner of
 	/// the key which has been signed by the private key in process of generating the proof.
 	///
-	/// Returns `true` if the proof is deemed correct by the cryto type.
+	/// Returns `true` if the proof is deemed correct by the crypto type.
 	fn verify_proof_of_possession(&self, owner: &[u8], pop: &Self::ProofOfPossession) -> bool;
 
 	/// Returns `Self` as raw vec.

@@ -996,7 +996,7 @@ fn basic_swap_works() {
 		assert!(slots::Leases::<Test>::get(ParaId::from(2000)).is_empty());
 		assert!(!slots::Leases::<Test>::get(ParaId::from(2001)).is_empty());
 
-		// Cant dissolve
+		// Can't dissolve
 		assert_noop!(
 			Crowdloan::dissolve(signed(1), ParaId::from(2000)),
 			CrowdloanError::<Test>::InvalidParaId

@@ -69,7 +69,7 @@ const LOG_TARGET: &str = "subsystem-bench::availability";
 pub enum Strategy {
 	/// Regular random chunk recovery. This is also the fallback for the next strategies.
 	Chunks,
-	/// Recovery from systematic chunks. Much faster than regular chunk recovery becasue it avoid
+	/// Recovery from systematic chunks. Much faster than regular chunk recovery because it avoid
 	/// doing the reed-solomon reconstruction.
 	Systematic,
 	/// Fetch the full availability datafrom backers first. Saves CPU as we don't need to

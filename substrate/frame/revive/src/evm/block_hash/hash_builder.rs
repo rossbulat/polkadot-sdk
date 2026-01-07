@@ -386,7 +386,7 @@ pub struct IncrementalHashBuilderIR {
 	pub tree_masks: Vec<u16>,
 	/// Hash mask.
 	pub hash_masks: Vec<u16>,
-	/// True if the buider should be stored in database.
+	/// True if the builder should be stored in database.
 	pub stored_in_database: bool,
 	/// Current RLP buffer.
 	pub rlp_buf: Vec<u8>,

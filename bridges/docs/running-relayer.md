@@ -52,7 +52,7 @@ has submitted that second transaction.
 But what if there are several relayers running? They are noticing the same queued message `100` and
 simultaneously submit identical message delivery transactions. You may expect that there'll be one lucky
 relayer, whose transaction would win the "race" and which will receive the compensation and reward. And
-there'll be several other relayers, losing some funds on their unuseful transactions.
+there'll be several other relayers, losing some funds on their useless transactions.
 
 But actually, we have a solution that invalidates transactions of "unlucky" relayers before they are
 included into the block. So at least you may be sure that you won't waste your funds on duplicate transactions.
@@ -60,9 +60,9 @@ included into the block. So at least you may be sure that you won't waste your f
 <details>
 <summary>Some details?</summary>
 
-All **unuseful** transactions are rejected by our
+All **useless** transactions are rejected by our
 [transaction extension](https://github.com/paritytech/polkadot-sdk/blob/master/bridges/bin/runtime-common/src/refund_relayer_extension.rs),
-which also handles transaction fee compensations. You may find more info on unuseful (aka obsolete) transactions
+which also handles transaction fee compensations. You may find more info on useless (aka obsolete) transactions
 by lurking in the code.
 
 We also have the WiP prototype of relayers coordination protocol, where relayers will get some guarantee
@@ -121,7 +121,7 @@ In exchange, such relayers may be slashed if they submit **invalid** or **non-mi
 
 Transactions, signed by relayers **without** active registration, on the other hand, receive no priority
 boost. It means that if there is active registered relayer, most likely all transactions from unregistered
-will be counted as **unuseful**, not included into the block and unregistered relayer won't get any reward
+will be counted as **useless**, not included into the block and unregistered relayer won't get any reward
 for his operations.
 
 Before registering, you should know several things about your funds:

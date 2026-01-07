@@ -1142,7 +1142,7 @@ fn hrmp_notifications_works() {
 		assert_ok!(Hrmp::hrmp_init_open_channel(para_b_origin.clone().into(), para_a, 2, 8));
 		Hrmp::assert_storage_consistency_exhaustive();
 
-		// check dmp notications
+		// check dmp notifications
 		assert_notification_for(
 			5,
 			para_b,
@@ -1173,7 +1173,7 @@ fn hrmp_notifications_works() {
 		assert_ok!(Hrmp::hrmp_accept_open_channel(para_b_origin.clone().into(), para_a));
 		Hrmp::assert_storage_consistency_exhaustive();
 
-		// check dmp notications
+		// check dmp notifications
 		assert_notification_for(
 			5,
 			para_b,
@@ -1206,7 +1206,7 @@ fn hrmp_notifications_works() {
 		));
 		Hrmp::assert_storage_consistency_exhaustive();
 
-		// check dmp notications
+		// check dmp notifications
 		assert_notification_for(
 			6,
 			para_b,

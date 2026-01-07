@@ -28,7 +28,7 @@ use frame_system::{offchain::CreateTransactionBase, ChainContext};
 use sp_core::{ConstU16, ConstU32, ConstU64, H256};
 use sp_runtime::{
 	testing::UintAuthorityId,
-	traits::{Applyable, BlakeTwo256, Checkable, IdentityLookup},
+	traits::{Applicable, BlakeTwo256, Checkable, IdentityLookup},
 	transaction_validity::{InvalidTransaction, TransactionSource, TransactionValidityError},
 	BuildStorage, DispatchError, Weight,
 };
@@ -285,7 +285,7 @@ pub fn new_test_ext() -> sp_io::TestExternalities {
 }
 
 /// We gather both error into a single type in order to do `assert_ok` and `assert_err` safely.
-/// Otherwise, we can easily miss the inner error in a `Resut<Resut<_, _>, _>`.
+/// Otherwise, we can easily miss the inner error in a `Result<Result<_, _>, _>`.
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum TransactionExecutionError {
 	Validity(TransactionValidityError),

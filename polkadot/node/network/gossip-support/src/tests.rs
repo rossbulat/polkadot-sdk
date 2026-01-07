@@ -1056,7 +1056,7 @@ fn test_quickly_connect_to_authorities_that_changed_address() {
 			);
 			assert!(overseer.recv().timeout(TIMEOUT).await.is_none());
 
-			// Change address for one authorithy and check we try to connect to it and
+			// Change address for one authority and check we try to connect to it and
 			// that we emit UpdateAuthorityID for the old PeerId and the new one.
 			Delay::new(TRY_RERESOLVE_AUTHORITIES).await;
 			let changed_peerid = authority_discovery_mock

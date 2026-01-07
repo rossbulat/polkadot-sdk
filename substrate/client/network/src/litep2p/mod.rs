@@ -719,7 +719,7 @@ impl<B: BlockT + 'static, H: ExHashT> NetworkBackend<B, H> for Litep2pNetworkBac
 								Some(handle) => {
 									let _ = handle.tx.unbounded_send(PeersetCommand::AddReservedPeers { peers });
 								}
-								None => log::warn!(target: LOG_TARGET, "protocol {protocol} doens't exist"),
+								None => log::warn!(target: LOG_TARGET, "protocol {protocol} doesn't exist"),
 							};
 						}
 						NetworkServiceCommand::AddKnownAddress { peer, address } => {
@@ -748,7 +748,7 @@ impl<B: BlockT + 'static, H: ExHashT> NetworkBackend<B, H> for Litep2pNetworkBac
 								Some(handle) => {
 									let _ = handle.tx.unbounded_send(PeersetCommand::SetReservedPeers { peers });
 								}
-								None => log::warn!(target: LOG_TARGET, "protocol {protocol} doens't exist"),
+								None => log::warn!(target: LOG_TARGET, "protocol {protocol} doesn't exist"),
 							}
 
 						},
@@ -757,7 +757,7 @@ impl<B: BlockT + 'static, H: ExHashT> NetworkBackend<B, H> for Litep2pNetworkBac
 							peer,
 						} => {
 							let Some(handle) = self.peerset_handles.get(&protocol) else {
-								log::warn!(target: LOG_TARGET, "protocol {protocol} doens't exist");
+								log::warn!(target: LOG_TARGET, "protocol {protocol} doesn't exist");
 								continue
 							};
 
@@ -768,7 +768,7 @@ impl<B: BlockT + 'static, H: ExHashT> NetworkBackend<B, H> for Litep2pNetworkBac
 							reserved_only,
 						} => {
 							let Some(handle) = self.peerset_handles.get(&protocol) else {
-								log::warn!(target: LOG_TARGET, "protocol {protocol} doens't exist");
+								log::warn!(target: LOG_TARGET, "protocol {protocol} doesn't exist");
 								continue
 							};
 
@@ -779,7 +779,7 @@ impl<B: BlockT + 'static, H: ExHashT> NetworkBackend<B, H> for Litep2pNetworkBac
 							peers,
 						} => {
 							let Some(handle) = self.peerset_handles.get(&protocol) else {
-								log::warn!(target: LOG_TARGET, "protocol {protocol} doens't exist");
+								log::warn!(target: LOG_TARGET, "protocol {protocol} doesn't exist");
 								continue
 							};
 

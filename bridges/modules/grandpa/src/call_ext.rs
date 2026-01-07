@@ -115,7 +115,7 @@ impl<T: Config<I>, I: 'static> SubmitFinalityProofHelper<T, I> {
 
 		// let's also check whether the header submission fits the hardcoded limits. A normal
 		// relayer would check that before submitting a transaction (since limits are constants
-		// and do not depend on a volatile runtime state), but the ckeck itself is cheap, so
+		// and do not depend on a volatile runtime state), but the check itself is cheap, so
 		// let's do it here too
 		if !call_info.fits_limits() {
 			return Err(Error::<T, I>::HeaderOverflowLimits);
@@ -154,7 +154,7 @@ impl<T: Config<I>, I: 'static> SubmitFinalityProofHelper<T, I> {
 					"Cannot finalize obsolete header"
 				);
 
-				return Err(Error::<T, I>::OldHeader)
+				return Err(Error::<T, I>::OldHeader);
 			},
 		};
 
@@ -168,7 +168,7 @@ impl<T: Config<I>, I: 'static> SubmitFinalityProofHelper<T, I> {
 					"Cannot finalize header signed by unknown authority set"
 				);
 
-				return Err(Error::<T, I>::InvalidAuthoritySetId)
+				return Err(Error::<T, I>::InvalidAuthoritySetId);
 			}
 		}
 
@@ -200,7 +200,7 @@ pub trait CallSubType<T: Config<I, RuntimeCall = Self>, I: 'static>:
 				justification,
 				None,
 				false,
-			))
+			));
 		} else if let Some(crate::Call::<T, I>::submit_finality_proof_ex {
 			finality_target,
 			justification,
@@ -213,7 +213,7 @@ pub trait CallSubType<T: Config<I, RuntimeCall = Self>, I: 'static>:
 				justification,
 				Some(*current_set_id),
 				*is_free_execution_expected,
-			))
+			));
 		}
 
 		None
@@ -243,13 +243,14 @@ pub trait CallSubType<T: Config<I, RuntimeCall = Self>, I: 'static>:
 		};
 
 		if Pallet::<T, I>::ensure_not_halted().is_err() {
-			return Err(InvalidTransaction::Call.into())
+			return Err(InvalidTransaction::Call.into());
 		}
 
 		let result = SubmitFinalityProofHelper::<T, I>::check_obsolete_from_extension(&call_info);
 		match result {
-			Ok(improved_by) =>
-				Ok(Some(VerifiedSubmitFinalityProofInfo { base: call_info, improved_by })),
+			Ok(improved_by) => {
+				Ok(Some(VerifiedSubmitFinalityProofInfo { base: call_info, improved_by }))
+			},
 			Err(Error::<T, I>::OldHeader) => Err(InvalidTransaction::Stale.into()),
 			Err(_) => Err(InvalidTransaction::Call.into()),
 		}

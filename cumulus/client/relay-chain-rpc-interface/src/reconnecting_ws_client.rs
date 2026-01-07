@@ -517,7 +517,7 @@ mod test {
 			server.start(Methods::default())
 		});
 
-		// Start the client. Not exitting right away with an error means it
+		// Start the client. Not exiting right away with an error means it
 		// is handling gracefully received connections refused while the server
 		// is starting.
 		let res = ClientManager::new(vec![format!("ws://127.0.0.1:{}", port)]).await;

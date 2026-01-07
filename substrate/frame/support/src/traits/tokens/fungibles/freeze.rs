@@ -45,7 +45,7 @@ pub trait Inspect<AccountId>: super::Inspect<AccountId> {
 	}
 
 	/// Returns `true` if it's possible to introduce a freeze for the given `id` onto the
-	/// account of `who`. This will be true as long as the implementor supports as many
+	/// account of `who`. This will be true as long as the implementer supports as many
 	/// concurrent freeze locks as there are possible values of `id`.
 	fn can_freeze(asset: Self::AssetId, id: &Self::Id, who: &AccountId) -> bool;
 }

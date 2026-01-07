@@ -74,7 +74,7 @@ pub(crate) struct MmrBlock {
 pub enum OffchainKeyType {
 	/// Temporary key.
 	Temp,
-	/// Cononical key.
+	/// Canonical key.
 	Canon,
 }
 

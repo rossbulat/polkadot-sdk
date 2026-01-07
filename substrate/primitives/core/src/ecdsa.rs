@@ -847,7 +847,7 @@ mod test {
 		let key = sig.recover_prehashed(&msg).unwrap();
 		assert_eq!(pair.public(), key);
 
-		// recovered key is useable
+		// recovered key is usable
 		assert!(Pair::verify_prehashed(&sig, &msg, &key));
 
 		// recovered key and signing key don't match

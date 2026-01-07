@@ -109,7 +109,7 @@ fn force_unstake_works() {
 		assert_eq!(Staking::bonded(&11), Some(11));
 		// Adds 2 slashing spans
 		add_slash(&11);
-		// Cant transfer
+		// Can't transfer
 		assert_noop!(
 			Balances::transfer_allow_death(RuntimeOrigin::signed(11), 1, 10),
 			TokenError::FundsUnavailable,

@@ -141,7 +141,7 @@ struct FuzzAppendState<H: Hasher> {
 	// Standard Overlay
 	overlay: OverlayedChanges<H>,
 
-	// block dropping/commiting too many transaction
+	// block dropping/committing too many transaction
 	transaction_depth: usize,
 }
 

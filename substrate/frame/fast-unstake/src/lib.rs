@@ -140,10 +140,10 @@ pub const LOG_TARGET: &'static str = "runtime::fast-unstake";
 
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: crate::LOG_TARGET,
-			concat!("[{:?}] 💨 ", $patter), frame_system::Pallet::<T>::block_number() $(, $values)*
+			concat!("[{:?}] 💨 ", $pattern), frame_system::Pallet::<T>::block_number() $(, $values)*
 		)
 	};
 }

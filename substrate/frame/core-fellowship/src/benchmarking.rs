@@ -195,7 +195,7 @@ mod benchmarks {
 
 	#[benchmark]
 	fn promote() -> Result<(), BenchmarkError> {
-		// Ensure that the `min_promotion_period` wont get in our way.
+		// Ensure that the `min_promotion_period` won't get in our way.
 		let mut params = Params::<T, I>::get();
 		let max_rank = T::MaxRank::get();
 

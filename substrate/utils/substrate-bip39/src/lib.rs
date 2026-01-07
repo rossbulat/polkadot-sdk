@@ -31,7 +31,7 @@ pub enum Error {
 	InvalidEntropy,
 }
 
-/// `entropy` should be a byte array from a correctly recovered and checksumed BIP39.
+/// `entropy` should be a byte array from a correctly recovered and checksummed BIP39.
 ///
 /// This function accepts slices of different length for different word lengths:
 ///

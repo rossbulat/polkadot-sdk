@@ -156,7 +156,7 @@
 //! listener][`TransactionStatusStreamFor`] (e.g. to RPC client) is responsibility of the
 //! [`MultiViewListener`].
 //!
-//! Every view is providing an independent aggreagated [stream][`create_aggregated_stream`] of
+//! Every view is providing an independent aggregated [stream][`create_aggregated_stream`] of
 //! events for all transactions in this view, which needs to be merged into the single stream
 //! exposed to the [external listener][`TransactionStatusStreamFor`] (e.g. to RPC client). For
 //! majority of events simple forwarding would not work (e.g. we could get multiple [`Ready`]

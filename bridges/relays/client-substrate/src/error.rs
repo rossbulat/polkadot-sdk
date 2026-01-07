@@ -110,7 +110,7 @@ pub enum Error {
 		/// Underlying error.
 		error: Box<Error>,
 	},
-	/// Failed to read sotrage value at given chain.
+	/// Failed to read storage value at given chain.
 	#[error("Failed to read storage value {key:?} at {chain}: {error:?}.")]
 	FailedToReadStorageValue {
 		/// Name of the chain where the error has happened.

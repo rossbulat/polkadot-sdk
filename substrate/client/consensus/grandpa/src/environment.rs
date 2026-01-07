@@ -170,7 +170,7 @@ pub type CurrentRounds<Block> = BTreeMap<RoundNumber, HasVoted<<Block as BlockT>
 
 /// The state of the current voter set, whether it is currently active or not
 /// and information related to the previously completed rounds. Current round
-/// voting status is used when restarting the voter, i.e. it will re-use the
+/// voting status is used when restarting the voter, i.e. it will reuse the
 /// previous votes for a given round if appropriate (same round and same local
 /// key).
 #[derive(Debug, Decode, Encode, PartialEq)]

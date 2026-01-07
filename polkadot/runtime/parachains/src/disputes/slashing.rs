@@ -41,7 +41,7 @@
 //! in the context of the current block. The `babe` and `grandpa` equivocation
 //! handlers also have to deal with this problem.
 //!
-//! Our implementation looks simillar to the `grandpa
+//! Our implementation looks similar to the `grandpa
 //! equivocation` handler. Meaning, we submit an `offence` for the concluded
 //! disputes about the current session candidate directly from the runtime. If,
 //! however, the dispute is about a past session, we record unapplied slashes on

@@ -853,7 +853,7 @@ pub mod pallet {
 			Ok(())
 		}
 
-		/// Approve bountry and propose a curator simultaneously.
+		/// Approve boundary and propose a curator simultaneously.
 		/// This call is a shortcut to calling `approve_bounty` and `propose_curator` separately.
 		///
 		/// May only be called from `T::SpendOrigin`.

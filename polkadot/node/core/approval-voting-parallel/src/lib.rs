@@ -565,11 +565,11 @@ fn validator_index_for_msg(
 ///
 /// In practive this is just a wrapper over two channels Receiver, that is injected into
 /// approval-voting worker and approval-distribution workers.
-type WorkProvider<M, Clos, State> = WorkProviderImpl<
+type WorkProvider<M, Close, State> = WorkProviderImpl<
 	SelectWithStrategy<
 		MeteredReceiver<FromOrchestra<M>>,
 		UnboundedMeteredReceiver<FromOrchestra<M>>,
-		Clos,
+		Close,
 		State,
 	>,
 >;
@@ -602,14 +602,14 @@ where
 	}
 }
 
-impl<M, Clos, State> WorkProvider<M, Clos, State>
+impl<M, Close, State> WorkProvider<M, Close, State>
 where
 	M: Send + Sync + 'static,
-	Clos: FnMut(&mut State) -> PollNext,
+	Close: FnMut(&mut State) -> PollNext,
 	State: Default,
 {
 	// Constructs a work providers from the channels handles.
-	fn from_rx_worker(rx: RxWorker<M>, prio: Clos) -> Self {
+	fn from_rx_worker(rx: RxWorker<M>, prio: Close) -> Self {
 		let prioritised = select_with_strategy(rx.0, rx.1, prio);
 		WorkProviderImpl(prioritised)
 	}
@@ -774,15 +774,15 @@ fn build_channels<T: Send + Sync + 'static>(
 ///
 /// `ToWorker` is used for sending messages to the workers.
 /// `WorkProvider` is used by the workers for receiving the messages.
-fn build_worker_handles<M, Clos, State>(
+fn build_worker_handles<M, Close, State>(
 	channel_name: String,
 	channel_size: usize,
 	metrics_watcher: &mut MetricsWatcher,
-	prio_right: Clos,
-) -> (ToWorker<M>, WorkProvider<M, Clos, State>)
+	prio_right: Close,
+) -> (ToWorker<M>, WorkProvider<M, Close, State>)
 where
 	M: Send + Sync + 'static,
-	Clos: FnMut(&mut State) -> PollNext,
+	Close: FnMut(&mut State) -> PollNext,
 	State: Default,
 {
 	let (to_worker, rx_worker) = build_channels(channel_name, channel_size, metrics_watcher);

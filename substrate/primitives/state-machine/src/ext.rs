@@ -56,13 +56,13 @@ fn guard() -> () {
 	()
 }
 
-/// Wraps a read-only backend, call executor, and current overlayed changes.
+/// Wraps a read-only backend, call executor, and current overlaid changes.
 pub struct Ext<'a, H, B>
 where
 	H: Hasher,
 	B: 'a + Backend<H>,
 {
-	/// The overlayed changes to write to.
+	/// The overlaid changes to write to.
 	overlay: &'a mut OverlayedChanges<H>,
 	/// The storage backend to read from.
 	backend: &'a B,
@@ -84,7 +84,7 @@ where
 		Ext { overlay, backend, id: 0 }
 	}
 
-	/// Create a new `Ext` from overlayed changes and read-only backend
+	/// Create a new `Ext` from overlaid changes and read-only backend
 	#[cfg(feature = "std")]
 	pub fn new(
 		overlay: &'a mut OverlayedChanges<H>,

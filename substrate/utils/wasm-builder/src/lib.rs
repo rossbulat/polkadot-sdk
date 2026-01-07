@@ -473,7 +473,7 @@ impl RuntimeTarget {
 
 		// This is a nightly-only flag.
 
-		// We only build `core` and `alloc` crates since wasm-builder disables `std` featue for
+		// We only build `core` and `alloc` crates since wasm-builder disables `std` feature for
 		// runtime. Thus the runtime is `#![no_std]` crate.
 
 		Some("build-std=core,alloc")

@@ -57,7 +57,7 @@ impl<Client> ChainHeadMockClient<Client> {
 		}
 	}
 
-	/// Trigger the import stram from a header.
+	/// Trigger the import stream from a header.
 	pub async fn trigger_import_stream(&self, header: Header) {
 		// Ensure the client called the `import_notification_stream`.
 		while self.import_sinks.lock().is_empty() {
@@ -74,7 +74,7 @@ impl<Client> ChainHeadMockClient<Client> {
 		}
 	}
 
-	/// Trigger the import stram from a header and a list of stale heads.
+	/// Trigger the import stream from a header and a list of stale heads.
 	pub async fn trigger_finality_stream(&self, header: Header, stale_blocks: Vec<Hash>) {
 		// Ensure the client called the `finality_notification_stream`.
 		while self.finality_sinks.lock().is_empty() {

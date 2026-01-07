@@ -68,7 +68,7 @@ pub enum ValidateTransactionPriority {
 	///
 	/// Validation will be done with lower priority.
 	Submitted,
-	/// Validate the transaction during maintainance process,
+	/// Validate the transaction during maintenance process,
 	///
 	/// Validation will be performed with higher priority.
 	Maintained,

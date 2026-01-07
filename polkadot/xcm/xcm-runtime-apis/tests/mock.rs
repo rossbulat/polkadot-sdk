@@ -256,7 +256,7 @@ pub type NativeTokenTransactor = FungibleAdapter<
 	LocalCheckAccount,
 >;
 
-/// Converter from Location to local asset id and viceversa.
+/// Converter from Location to local asset id and vice-versa.
 pub struct LocationToAssetIdForAssetsPallet;
 impl MaybeEquivalence<Location, AssetIdForAssetsPallet> for LocationToAssetIdForAssetsPallet {
 	fn convert(location: &Location) -> Option<AssetIdForAssetsPallet> {

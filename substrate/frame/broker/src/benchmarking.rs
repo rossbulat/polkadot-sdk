@@ -905,8 +905,8 @@ mod benches {
 
 		let now = RCBlockNumberProviderOf::<T::Coretime>::current_block_number();
 		let price = Broker::<T>::sale_price(&sale, now);
-		(0..n_renewable.into()).try_for_each(|indx| -> Result<(), BenchmarkError> {
-			let task = 1000 + indx;
+		(0..n_renewable.into()).try_for_each(|index| -> Result<(), BenchmarkError> {
+			let task = 1000 + index;
 			let caller: T::AccountId = T::SovereignAccountOf::maybe_convert(task)
 				.expect("Failed to get sovereign account");
 			T::Currency::set_balance(
@@ -970,15 +970,15 @@ mod benches {
 		);
 
 		// Make sure all cores got renewed:
-		(0..n_renewable).for_each(|indx| {
-			let task = 1000 + indx;
+		(0..n_renewable).for_each(|index| {
+			let task = 1000 + index;
 			let who = T::SovereignAccountOf::maybe_convert(task)
 				.expect("Failed to get sovereign account");
 			assert_has_event::<T>(
 				Event::Renewed {
 					who,
-					old_core: n_reservations as u16 + n_leases as u16 + indx as u16,
-					core: n_reservations as u16 + n_leases as u16 + indx as u16,
+					old_core: n_reservations as u16 + n_leases as u16 + index as u16,
+					core: n_reservations as u16 + n_leases as u16 + index as u16,
 					price,
 					begin: new_sale.region_begin,
 					duration: config.region_length,
@@ -1168,8 +1168,8 @@ mod benches {
 
 		let sale = SaleInfo::<T>::get().expect("Sale has already started.");
 		// We assume max auto renewals for worst case.
-		(0..T::MaxAutoRenewals::get() - 1).try_for_each(|indx| -> Result<(), BenchmarkError> {
-			let task = 1000 + indx;
+		(0..T::MaxAutoRenewals::get() - 1).try_for_each(|index| -> Result<(), BenchmarkError> {
+			let task = 1000 + index;
 			let caller: T::AccountId = T::SovereignAccountOf::maybe_convert(task)
 				.expect("Failed to get sovereign account");
 			// Sovereign account needs sufficient funds to purchase and renew.
@@ -1234,8 +1234,8 @@ mod benches {
 
 		let sale = SaleInfo::<T>::get().expect("Sale has already started.");
 		// We assume max auto renewals for worst case.
-		(0..T::MaxAutoRenewals::get()).try_for_each(|indx| -> Result<(), BenchmarkError> {
-			let task = 1000 + indx;
+		(0..T::MaxAutoRenewals::get()).try_for_each(|index| -> Result<(), BenchmarkError> {
+			let task = 1000 + index;
 			let caller: T::AccountId = T::SovereignAccountOf::maybe_convert(task)
 				.expect("Failed to get sovereign account");
 			T::Currency::set_balance(

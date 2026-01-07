@@ -22,7 +22,7 @@ use sp_io::hashing::blake2_256;
 use sp_keyring::Sr25519Keyring;
 use sp_runtime::{
 	generic::Era,
-	traits::{Applyable, Checkable, Hash, IdentityLookup},
+	traits::{Applicable, Checkable, Hash, IdentityLookup},
 	DispatchErrorWithPostInfo, MultiSignature,
 };
 

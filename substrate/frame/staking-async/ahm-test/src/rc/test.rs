@@ -716,7 +716,7 @@ fn offences_spam_sent_page_by_page() {
 		NextAhDeliveryFails::set(true);
 		roll_next();
 
-		// offence queue has not changed, we didn't send anyhting.
+		// offence queue has not changed, we didn't send anything.
 		assert!(LocalQueue::get_since_last_call().is_empty());
 		assert_eq!(ah_client::OffenceSendQueue::<Runtime>::count(), 2 * onchain_batch_size);
 		assert_eq!(ah_client::OffenceSendQueue::<Runtime>::pages(), 2);
@@ -1262,10 +1262,10 @@ mod splitting {
 				prune_up_to: None,
 				leftover: false,
 			};
-			let splitted = full_report.split(2);
-			let incomplete0 = splitted[0].clone();
-			let incomplete1 = splitted[1].clone();
-			let complete = splitted[2].clone();
+			let split = full_report.split(2);
+			let incomplete0 = split[0].clone();
+			let incomplete1 = split[1].clone();
+			let complete = split[2].clone();
 
 			assert!(incomplete0.leftover);
 			assert!(incomplete1.leftover);

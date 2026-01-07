@@ -1578,7 +1578,7 @@ fn freezer_should_work() {
 		Balances::make_free_balance_be(&1, 100);
 		assert_ok!(Assets::approve_transfer(RuntimeOrigin::signed(1), 0, 2, 50));
 		let e = Error::<Test>::BalanceLow;
-		// ...but that wont work either:
+		// ...but that won't work either:
 		assert_noop!(Assets::transfer_approved(RuntimeOrigin::signed(2), 0, 1, 2, 21), e);
 		// a force transfer won't work also.
 		let e = Error::<Test>::BalanceLow;

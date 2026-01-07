@@ -442,7 +442,7 @@ impl OverlayedEntry<StorageEntry> {
 				},
 				StorageEntry::Set(prev) => {
 					// For compatibility: append if there is a encoded length, overwrite
-					// with value otherwhise.
+					// with value otherwise.
 					if let Some(current_length) = StorageAppend::new(prev).extract_length() {
 						// The `prev` is cloned here, but it could be optimized to not do the clone
 						// here as it is done for `Append` above.
@@ -477,7 +477,7 @@ impl OverlayedEntry<StorageEntry> {
 					let mut append = StorageAppend::new(data);
 
 					// For compatibility: append if there is a encoded length, overwrite
-					// with value otherwhise.
+					// with value otherwise.
 					if let Some(current_length) = append.extract_length() {
 						append.append_raw(element);
 						Some((core::mem::take(data), current_length + 1, Some(current_length)))
@@ -554,8 +554,8 @@ impl<K: Ord + Hash + Clone, V> OverlayedMap<K, V> {
 	///
 	/// Can be rolled back or committed when called inside a transaction.
 	pub fn set_offchain(&mut self, key: K, value: V, at_extrinsic: Option<u32>) {
-		let overlayed = self.changes.entry(key.clone()).or_default();
-		overlayed.set_offchain(value, insert_dirty(&mut self.dirty_keys, key), at_extrinsic);
+		let overlaid = self.changes.entry(key.clone()).or_default();
+		overlaid.set_offchain(value, insert_dirty(&mut self.dirty_keys, key), at_extrinsic);
 	}
 
 	/// Get a list of all changes as seen by current transaction.
@@ -661,7 +661,7 @@ impl<K: Ord + Hash + Clone, V> OverlayedMap<K, V> {
 		}
 
 		for key in self.dirty_keys.pop().ok_or(NoOpenTransaction)? {
-			let overlayed = self.changes.get_mut(&key).expect(
+			let overlaid = self.changes.get_mut(&key).expect(
 				"\
 				A write to an OverlayedValue is recorded in the dirty key set. Before an
 				OverlayedValue is removed, its containing dirty set is removed. This
@@ -670,11 +670,11 @@ impl<K: Ord + Hash + Clone, V> OverlayedMap<K, V> {
 			);
 
 			if rollback {
-				overlayed.pop_transaction();
+				overlaid.pop_transaction();
 
 				// We need to remove the key as an `OverlayValue` with no transactions
 				// violates its invariant of always having at least one transaction.
-				if overlayed.transactions.is_empty() {
+				if overlaid.transactions.is_empty() {
 					self.changes.remove(&key);
 				}
 			} else {
@@ -685,15 +685,15 @@ impl<K: Ord + Hash + Clone, V> OverlayedMap<K, V> {
 					// Last tx: Is there already a value in the committed set?
 					// Check against one rather than empty because the current tx is still
 					// in the list as it is popped later in this function.
-					overlayed.transactions.len() > 1
+					overlaid.transactions.len() > 1
 				};
 
 				// We only need to merge if there is an pre-existing value. It may be a value from
 				// the previous transaction or a value committed without any open transaction.
 				if has_predecessor {
-					let dropped_tx = overlayed.pop_transaction();
-					*overlayed.value_mut() = dropped_tx.value;
-					overlayed.transaction_extrinsics_mut().extend(dropped_tx.extrinsics);
+					let dropped_tx = overlaid.pop_transaction();
+					*overlaid.value_mut() = dropped_tx.value;
+					overlaid.transaction_extrinsics_mut().extend(dropped_tx.extrinsics);
 				}
 			}
 		}
@@ -732,7 +732,7 @@ impl OverlayedChangeSet {
 		}
 
 		for key in self.dirty_keys.pop().ok_or(NoOpenTransaction)? {
-			let overlayed = self.changes.get_mut(&key).expect(
+			let overlaid = self.changes.get_mut(&key).expect(
 				"\
 				A write to an OverlayedValue is recorded in the dirty key set. Before an
 				OverlayedValue is removed, its containing dirty set is removed. This
@@ -741,16 +741,16 @@ impl OverlayedChangeSet {
 			);
 
 			if rollback {
-				match overlayed.pop_transaction().value {
+				match overlaid.pop_transaction().value {
 					StorageEntry::Append {
 						data,
 						materialized_length,
 						parent_size: Some(parent_size),
 						..
 					} => {
-						debug_assert!(!overlayed.transactions.is_empty());
+						debug_assert!(!overlaid.transactions.is_empty());
 						restore_append_to_parent(
-							overlayed.value_mut(),
+							overlaid.value_mut(),
 							data,
 							materialized_length,
 							parent_size,
@@ -761,7 +761,7 @@ impl OverlayedChangeSet {
 
 				// We need to remove the key as an `OverlayValue` with no transactions
 				// violates its invariant of always having at least one transaction.
-				if overlayed.transactions.is_empty() {
+				if overlaid.transactions.is_empty() {
 					self.changes.remove(&key);
 				}
 			} else {
@@ -772,19 +772,19 @@ impl OverlayedChangeSet {
 					// Last tx: Is there already a value in the committed set?
 					// Check against one rather than empty because the current tx is still
 					// in the list as it is popped later in this function.
-					overlayed.transactions.len() > 1
+					overlaid.transactions.len() > 1
 				};
 
 				// We only need to merge if there is an pre-existing value. It may be a value from
 				// the previous transaction or a value committed without any open transaction.
 				if has_predecessor {
-					let mut committed_tx = overlayed.pop_transaction();
+					let mut committed_tx = overlaid.pop_transaction();
 					let mut merge_appends = false;
 
 					// consecutive appends need to keep past `parent_size` value.
 					if let StorageEntry::Append { parent_size, .. } = &mut committed_tx.value {
 						if parent_size.is_some() {
-							let parent = overlayed.value_mut();
+							let parent = overlaid.value_mut();
 							if let StorageEntry::Append { parent_size: keep_me, .. } = parent {
 								merge_appends = true;
 								*parent_size = *keep_me;
@@ -793,10 +793,10 @@ impl OverlayedChangeSet {
 					}
 
 					if merge_appends {
-						*overlayed.value_mut() = committed_tx.value;
+						*overlaid.value_mut() = committed_tx.value;
 					} else {
-						let removed = core::mem::replace(overlayed.value_mut(), committed_tx.value);
-						// The transaction being commited is not an append operation. However, the
+						let removed = core::mem::replace(overlaid.value_mut(), committed_tx.value);
+						// The transaction being committed is not an append operation. However, the
 						// value being overwritten in the previous transaction might be an append
 						// that needs to be merged with its parent. We only need to handle `Append`
 						// here because `Set` and `Remove` can directly overwrite previous
@@ -806,14 +806,14 @@ impl OverlayedChangeSet {
 						} = removed
 						{
 							if let Some(parent_size) = parent_size {
-								let transactions = overlayed.transactions.len();
+								let transactions = overlaid.transactions.len();
 
 								// info from replaced head so len is at least one
 								// and parent_size implies a parent transaction
 								// so length is at least two.
 								debug_assert!(transactions >= 2);
 								if let Some(parent) =
-									overlayed.transactions.get_mut(transactions - 2)
+									overlaid.transactions.get_mut(transactions - 2)
 								{
 									restore_append_to_parent(
 										&mut parent.value,
@@ -826,7 +826,7 @@ impl OverlayedChangeSet {
 						}
 					}
 
-					overlayed.transaction_extrinsics_mut().extend(committed_tx.extrinsics);
+					overlaid.transaction_extrinsics_mut().extend(committed_tx.extrinsics);
 				}
 			}
 		}
@@ -862,8 +862,8 @@ impl OverlayedChangeSet {
 	///
 	/// Can be rolled back or committed when called inside a transaction.
 	pub fn set(&mut self, key: StorageKey, value: Option<StorageValue>, at_extrinsic: Option<u32>) {
-		let overlayed = self.changes.entry(key.clone()).or_default();
-		overlayed.set(value, insert_dirty(&mut self.dirty_keys, key), at_extrinsic);
+		let overlaid = self.changes.entry(key.clone()).or_default();
+		overlaid.set(value, insert_dirty(&mut self.dirty_keys, key), at_extrinsic);
 	}
 
 	/// Append bytes to an existing content.
@@ -874,9 +874,9 @@ impl OverlayedChangeSet {
 		init: impl Fn() -> StorageValue,
 		at_extrinsic: Option<u32>,
 	) {
-		let overlayed = self.changes.entry(key.clone()).or_default();
+		let overlaid = self.changes.entry(key.clone()).or_default();
 		let first_write_in_tx = insert_dirty(&mut self.dirty_keys, key);
-		overlayed.append(value, first_write_in_tx, init, at_extrinsic);
+		overlaid.append(value, first_write_in_tx, init, at_extrinsic);
 	}
 
 	/// Set all values to deleted which are matched by the predicate.

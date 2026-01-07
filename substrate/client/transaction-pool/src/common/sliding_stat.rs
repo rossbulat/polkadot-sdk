@@ -430,7 +430,7 @@ impl<T> Clone for SyncSlidingStats<T> {
 /// Inserts a value into a `SlidingStats` and conditionally logs the current stats using `tracing`.
 ///
 /// This macro inserts the given `$value` into the `$stats` collector only if tracing is enabled
-/// for the given `$target` and `$level`. The log will be emiited only if enough time has passed
+/// for the given `$target` and `$level`. The log will be emitted only if enough time has passed
 /// since the last logged output (as tracked by the internal last_log timestamp).
 ///
 /// The macro respects throttling: stats will not be logged more frequently than either the

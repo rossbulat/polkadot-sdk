@@ -77,7 +77,7 @@ pub trait Inspect<AccountId>: super::Inspect<AccountId> {
 	/// Check to see if some `amount` of funds of `who` may be placed on hold with the given
 	/// `reason`. Reasons why this may not be true:
 	///
-	/// - The implementor supports only a limited number of concurrent holds on an account which is
+	/// - The implementer supports only a limited number of concurrent holds on an account which is
 	///   the possible values of `reason`;
 	/// - The total balance of the account is less than `amount`;
 	/// - Removing `amount` from the total balance would kill the account and remove the only
@@ -106,7 +106,7 @@ pub trait Inspect<AccountId>: super::Inspect<AccountId> {
 	/// Check to see if some `amount` of funds of `who` may be placed on hold for the given
 	/// `reason`. Reasons why this may not be true:
 	///
-	/// - The implementor supports only a limited number of concurrent holds on an account which is
+	/// - The implementer supports only a limited number of concurrent holds on an account which is
 	///   the possible values of `reason`;
 	/// - The main balance of the account is less than `amount`;
 	/// - Removing `amount` from the main balance would kill the account and remove the only

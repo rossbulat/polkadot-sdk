@@ -2217,7 +2217,7 @@ fn register_pna_in_v5_while_transfer_in_v4_should_work() {
 	AssetHubWestend::force_default_xcm_version(Some(4));
 	BridgeHubWestend::force_default_xcm_version(Some(4));
 
-	// Send token to Ethereum in V4 fomat
+	// Send token to Ethereum in V4 format
 	AssetHubWestend::execute_with(|| {
 		// LTS is V4
 		use xcm::lts::{Junction::*, NetworkId::*, *};

@@ -118,7 +118,7 @@ pub type SlowAdjustingFeeUpdate<R> = TargetedFeeAdjustment<
 /// Implements the weight types for a runtime.
 /// It expects the passed runtime constants to contain a `weights` module.
 /// The generated weight types were formerly part of the common
-/// runtime but are now runtime dependant.
+/// runtime but are now runtime dependent.
 #[macro_export]
 macro_rules! impl_runtime_weights {
 	($runtime:ident) => {

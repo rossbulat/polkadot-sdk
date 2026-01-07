@@ -347,7 +347,7 @@ Granularity is particularly crucial in the final design as only a few select fun
 
 ## Enabling Approval Voter Slashes
 
-The original Polkadot 1.0 design describes that all validators on the loosing side of the dispute are slashed. In the
+The original Polkadot 1.0 design describes that all validators on the losing side of the dispute are slashed. In the
 current system only the backers are slashed and any approval voters on the wrong side will not be slashed. This creates
 some undesirable incentives:
 
@@ -362,7 +362,7 @@ between 0-2% are reasonable. 0% would still disable which with the opportunity c
  > **Note:** \
 > Spammy approval checkers are in fact not a big issue as a side effect of the offchain-disabling introduced by the
 > Defense Against Past-Era Dispute Spam (**Node**) [#2225](https://github.com/paritytech/polkadot-sdk/issues/2225). It
-> makes it so all validators loosing a dispute are locally disabled and ignored for dispute initiation so it effectively
+> makes it so all validators losing a dispute are locally disabled and ignored for dispute initiation so it effectively
 > silences spammers. They can still no-show but the damage is minimized.
 
 

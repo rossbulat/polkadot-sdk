@@ -25,7 +25,7 @@ use sp_runtime::traits::{Hash, TrailingZeroInput};
 ///
 /// See [`DefaultAddressGenerator`] for the default implementation.
 ///
-/// # Note for implementors
+/// # Note for implementers
 ///
 /// 1. Make sure that there are no collisions, different inputs never lead to the same output.
 /// 2. Make sure that the same inputs lead to the same output.

@@ -910,7 +910,7 @@ async fn newer_records_overwrite_older_ones() {
 	assert_eq!(
 		Some(HashSet::from([new_record])),
 		cached_remote_addresses,
-		"Expect worker to store the newest recrod",
+		"Expect worker to store the newest record",
 	);
 
 	let result = network
@@ -1390,7 +1390,7 @@ async fn test_handle_put_record_request() {
 			worker.refill_pending_lookups_queue().await.unwrap();
 			assert_eq!(worker.last_known_records.len(), 1);
 
-			// Check known records gets clean up, when an authorithy gets out of the
+			// Check known records gets clean up, when an authority gets out of the
 			// active set.
 			worker.client = Arc::new(TestApi { authorities: Default::default() });
 			worker.refill_pending_lookups_queue().await.unwrap();

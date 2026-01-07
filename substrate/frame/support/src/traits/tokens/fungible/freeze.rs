@@ -30,7 +30,7 @@ use sp_runtime::{DispatchResult, TokenError};
 use crate::{ensure, traits::tokens::Fortitude};
 
 /// Trait for inspecting a fungible asset which can be frozen. Freezing is essentially setting a
-/// minimum balance bellow which the total balance (inclusive of any funds placed on hold) may not
+/// minimum balance below which the total balance (inclusive of any funds placed on hold) may not
 /// be normally allowed to drop. Generally, freezers will provide an "update" function such that
 /// if the total balance does drop below the limit, then the freezer can update their housekeeping
 /// accordingly.
@@ -47,7 +47,7 @@ pub trait Inspect<AccountId>: super::Inspect<AccountId> {
 	}
 
 	/// Returns `true` if it's possible to introduce a freeze for the given `id` onto the
-	/// account of `who`. This will be true as long as the implementor supports as many
+	/// account of `who`. This will be true as long as the implementer supports as many
 	/// concurrent freezes as there are possible values of `id`.
 	fn can_freeze(id: &Self::Id, who: &AccountId) -> bool;
 }

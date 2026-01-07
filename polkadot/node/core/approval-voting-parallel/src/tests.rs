@@ -146,18 +146,18 @@ impl SyncOracle for TestSyncOracle {
 	}
 }
 
-fn test_harness<T, Clos, State>(
+fn test_harness<T, Close, State>(
 	num_approval_distro_workers: usize,
-	prio_right: Clos,
+	prio_right: Close,
 	subsystem_gracefully_exits: bool,
 	test_fn: impl FnOnce(
 		VirtualOverseer,
-		WorkProvider<ApprovalVotingMessage, Clos, State>,
-		Vec<WorkProvider<ApprovalDistributionMessage, Clos, State>>,
+		WorkProvider<ApprovalVotingMessage, Close, State>,
+		Vec<WorkProvider<ApprovalDistributionMessage, Close, State>>,
 	) -> T,
 ) where
 	T: Future<Output = VirtualOverseer>,
-	Clos: Clone + FnMut(&mut State) -> PollNext,
+	Close: Clone + FnMut(&mut State) -> PollNext,
 	State: Default,
 {
 	let (subsystem, context, virtual_overseer) = build_subsystem(Box::new(TestSyncOracle {}));

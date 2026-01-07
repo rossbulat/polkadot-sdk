@@ -1897,7 +1897,7 @@ mod tests {
 			let para_1 = new_para();
 
 			assert_ok!(Crowdloan::create(RuntimeOrigin::signed(1), para_1, 1000, 1, 1, 9, None));
-			// Cant add a memo before you have contributed.
+			// Can't add a memo before you have contributed.
 			assert_noop!(
 				Crowdloan::add_memo(RuntimeOrigin::signed(1), para_1, b"hello, world".to_vec()),
 				Error::<Test>::NoContributions,
