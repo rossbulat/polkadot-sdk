@@ -753,7 +753,7 @@ impl<T: Config> Pallet<T> {
 	///
 	/// Does **not** include the tip.
 	///
-	/// If noone calls `charge_from_txfee` it is the same as the pre dispatch fee.
+	/// If no one calls `charge_from_txfee` it is the same as the pre dispatch fee.
 	pub fn remaining_txfee<Balance>() -> Balance
 	where
 		CreditOf<T>: Imbalance<Balance>,

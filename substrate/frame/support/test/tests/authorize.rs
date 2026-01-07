@@ -23,7 +23,7 @@ use frame_support::{
 };
 use sp_runtime::{
 	testing::UintAuthorityId,
-	traits::{Applyable, Checkable},
+	traits::{Applicable, Checkable},
 	transaction_validity::{
 		InvalidTransaction, TransactionValidity, TransactionValidityError, ValidTransaction,
 	},

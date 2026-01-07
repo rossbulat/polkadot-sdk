@@ -4,7 +4,7 @@ import { logger, nullifySigned, nullifyUnsigned, type ApiDeclarations } from "..
 // An unsigned solution scenario:
 //
 // When no staking-miner is running (and for simplicity the signed phase is also set to zero). We
-// expect an unsigned solution to successfullly proceed and submit a solution with `minerPages` out
+// expect an unsigned solution to successfully proceed and submit a solution with `minerPages` out
 // of the total `pages`.
 export function commonUnsignedSteps(
 	expectedValidatorSetCount: number,

@@ -62,7 +62,7 @@
 //!
 //! Both [`ElectionDataProvider`] and [`ElectionProvider`] traits are parameterized by page,
 //! supporting an election to be performed over multiple pages. This enables the
-//! [`ElectionDataProvider`] implementor to provide all the election data over multiple pages.
+//! [`ElectionDataProvider`] implementer to provide all the election data over multiple pages.
 //! Similarly [`ElectionProvider::elect`] is parameterized by page index.
 //!
 //! ## Election Data
@@ -330,7 +330,7 @@ pub trait ElectionDataProvider {
 	/// Returns the possible targets for the election associated with the provided `page`, i.e. the
 	/// targets that could become elected, thus "electable".
 	///
-	/// This should be implemented as a self-weighing function. The implementor should register its
+	/// This should be implemented as a self-weighing function. The implementer should register its
 	/// appropriate weight at the end of execution with the system pallet directly.
 	fn electable_targets(
 		bounds: DataProviderBounds,
@@ -351,7 +351,7 @@ pub trait ElectionDataProvider {
 	///
 	/// Note that if a notion of self-vote exists, it should be represented here.
 	///
-	/// This should be implemented as a self-weighing function. The implementor should register its
+	/// This should be implemented as a self-weighing function. The implementer should register its
 	/// appropriate weight at the end of execution with the system pallet directly.
 	fn electing_voters(
 		bounds: DataProviderBounds,
@@ -369,7 +369,7 @@ pub trait ElectionDataProvider {
 
 	/// The number of targets to elect.
 	///
-	/// This should be implemented as a self-weighing function. The implementor should register its
+	/// This should be implemented as a self-weighing function. The implementer should register its
 	/// appropriate weight at the end of execution with the system pallet directly.
 	///
 	/// A sensible implementation should use the minimum between this value and
@@ -381,7 +381,7 @@ pub trait ElectionDataProvider {
 
 	/// Provide a best effort prediction about when the next election is about to happen.
 	///
-	/// In essence, the implementor should predict with this function when it will trigger the
+	/// In essence, the implementer should predict with this function when it will trigger the
 	/// [`ElectionProvider::elect`].
 	///
 	/// This is only useful for stateful election providers.

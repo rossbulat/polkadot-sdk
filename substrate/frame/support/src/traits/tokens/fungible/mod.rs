@@ -130,7 +130,7 @@
 //! slashed.
 //!
 //! Every Hold and Freeze is accompanied by a unique `Reason`, making it clear for each instance
-//! what the originating pallet and purpose is. These reasons are amalgomated into a single enum
+//! what the originating pallet and purpose is. These reasons are amalgamated into a single enum
 //! `RuntimeHoldReason` and `RuntimeFreezeReason` respectively, when the runtime is compiled.
 //!
 //! Note that `Hold` and `Freeze` reasons should remain in your runtime for as long as storage

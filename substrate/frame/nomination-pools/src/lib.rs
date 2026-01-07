@@ -387,10 +387,10 @@ pub const LOG_TARGET: &str = "runtime::nomination-pools";
 // syntactic sugar for logging.
 #[macro_export]
 macro_rules! log {
-	($level:tt, $patter:expr $(, $values:expr)* $(,)?) => {
+	($level:tt, $pattern:expr $(, $values:expr)* $(,)?) => {
 		log::$level!(
 			target: $crate::LOG_TARGET,
-			concat!("[{:?}] 🏊‍♂️ ", $patter), <frame_system::Pallet<T>>::block_number() $(, $values)*
+			concat!("[{:?}] 🏊‍♂️ ", $pattern), <frame_system::Pallet<T>>::block_number() $(, $values)*
 		)
 	};
 }
@@ -1473,7 +1473,7 @@ impl<T: Config> RewardPool<T> {
 		//
 		// dot_total_issuance * 10^18 / 10^10 = dot_total_issuance * 10^8
 		//
-		// which, with the current numbers, is a miniscule fraction of the u128 capacity.
+		// which, with the current numbers, is a minuscule fraction of the u128 capacity.
 		//
 		// Thus, adding two values of type reward counter should be safe for ages in a chain like
 		// Polkadot. The important note here is that `reward_pool.last_recorded_reward_counter` only
@@ -3262,7 +3262,7 @@ pub mod pallet {
 				T::StakeAdapter::bonding_duration() < TotalUnbondingPools::<T>::get(),
 				"There must be more unbonding pools then the bonding duration /
 				so a slash can be applied to relevant unbonding pools. (We assume /
-				the bonding duration > slash deffer duration.",
+				the bonding duration > slash defer duration.",
 			);
 		}
 	}

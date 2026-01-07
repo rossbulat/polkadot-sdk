@@ -118,7 +118,7 @@ fn migrate_to_transfer_stake<T: Config>(pool_id: PoolId) {
 	// drop the agent and its associated delegators .
 	T::StakeAdapter::remove_as_agent(Pool::from(pool_acc.clone()));
 
-	// tranfer funds from all members to the pool account.
+	// transfer funds from all members to the pool account.
 	PoolMembers::<T>::iter()
 		.filter(|(_, member)| member.pool_id == pool_id)
 		.for_each(|(member_acc, member)| {

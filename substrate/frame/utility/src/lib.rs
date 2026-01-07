@@ -134,7 +134,7 @@ pub mod pallet {
 	// Align the call size to 1KB. As we are currently compiling the runtime for native/wasm
 	// the `size_of` of the `Call` can be different. To ensure that this don't leads to
 	// mismatches between native/wasm or to different metadata for the same runtime, we
-	// algin the call size. The value is chosen big enough to hopefully never reach it.
+	// align the call size. The value is chosen big enough to hopefully never reach it.
 	const CALL_ALIGN: u32 = 1024;
 
 	#[pallet::extra_constants]
@@ -468,7 +468,7 @@ pub mod pallet {
 		/// May be called from any origin except `None`.
 		///
 		/// This function first attempts to dispatch the `main` call.
-		/// If the `main` call fails, the `fallback` is attemted.
+		/// If the `main` call fails, the `fallback` is attempted.
 		/// if the fallback is successfully dispatched, the weights of both calls
 		/// are accumulated and an event containing the main call error is deposited.
 		///
